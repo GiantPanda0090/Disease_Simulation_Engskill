@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Author lqsch Qi Li-->
 
+<!--Author lqsch Qi Li-->
 <!--Front end InterfaceXML file-->
 <!--Download JavaFX 8.0 plus SceneBuilder before edit it-->
 <!--suggested to edit it in Intellij with SceneBuilder-->
 <!--Right click the fxml file on the project list in the right and choose Open in Scene Builder-->
-
 
 <?import javafx.scene.canvas.*?>
 <?import javafx.scene.shape.*?>
@@ -185,7 +184,7 @@
          <children>
             <HBox prefHeight="100.0" prefWidth="1126.0">
                <children>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="385.0">
+                  <HBox alignment="CENTER" prefHeight="51.0" prefWidth="385.0">
                      <children>
                         <Label prefHeight="48.0" prefWidth="384.0" text="Disease Effection Simulator " textAlignment="CENTER">
                            <font>
@@ -196,7 +195,51 @@
                   </HBox>
                   <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="738.0">
                      <children>
-                        <Label prefHeight="21.0" prefWidth="210.0" text="-Fancy version of 'game of life'" />
+                        <BorderPane prefHeight="100.0" prefWidth="749.0">
+                           <bottom>
+                              <HBox alignment="CENTER" prefHeight="24.0" prefWidth="738.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <HBox prefHeight="31.0" prefWidth="115.0">
+                                       <children>
+                                          <ToggleButton fx:id="infectSW" mnemonicParsing="false" text="infected /day" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="31.0" prefWidth="90.0">
+                                       <children>
+                                          <ToggleButton fx:id="deadSW" mnemonicParsing="false" text="dead /day" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="31.0" prefWidth="115.0">
+                                       <children>
+                                          <ToggleButton fx:id="recoverySW" mnemonicParsing="false" text="recoverd/day" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="31.0" prefWidth="73.0">
+                                       <children>
+                                          <ToggleButton fx:id="illSW" mnemonicParsing="false" text="ill /day" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="31.0" prefWidth="142.0">
+                                       <children>
+                                          <ToggleButton fx:id="tInfectSW" mnemonicParsing="false" prefHeight="31.0" prefWidth="134.0" text="Total infection" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="31.0" prefWidth="115.0">
+                                       <children>
+                                          <ToggleButton fx:id="tDeathSW" mnemonicParsing="false" text="Total death" />
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </HBox>
+                           </bottom>
+                           <center>
+                              <HBox alignment="BOTTOM_CENTER" prefHeight="1.0" prefWidth="738.0" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="169.0" text="Output switch" />
+                                 </children>
+                              </HBox>
+                           </center>
+                        </BorderPane>
                      </children>
                   </HBox>
                </children>
