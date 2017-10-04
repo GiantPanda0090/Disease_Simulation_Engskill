@@ -88,7 +88,7 @@ public class Controller2 implements Initializable {
     public void start(ActionEvent actionEvent) {
         //initialization for start button
         int populationInt= Integer.parseInt(population.getText());
-        outputBox.setText("Please click on the empty space on the right to choose where has the initial patient been deteced. ");
+        outputBox.setText("Please click on the empty space on the right to choose where has the initial patient been detected. ");
         if (populationInt < 74 * 80) {
             maxX = (int) Math.floor(Math.sqrt(populationInt));
             maxY = populationInt / maxX;
@@ -135,28 +135,14 @@ public class Controller2 implements Initializable {
                             if (original[x][y] == true) {
 
                                 //death
-                                Random dRand = new Random();
-                                double dTest = dRand.nextDouble();
-                                if (dTest < Double.parseDouble(death.getText())) {
-                                    originalT[x][y] = -2;
-                                    original[x][y] = false;
-                                    deathCounter++;
-                                    gc.setFill(Color.YELLOW);
-                                    gc.fillRect(x * 10, y * 10, 10, 10);
+                                if(death(x,y)){
                                     break;
                                 }
 
                                 //healing
-                                originalT[x][y] = originalT[x][y] - 1;
-                                if (originalT[x][y] == 0) {
-                                    original[x][y] = false;
-                                    originalT[x][y] = -1;
-                                    recoverCounter++;
-                                    gc.setFill(Color.GREEN);
-                                    gc.fillRect(x * 10, y * 10, 10, 10);
-                                    //gc.clearRect(x* 10,y* 10,10,10);
+                               if (healing(x,y)){
                                     break;
-                                }
+                               }
                                 //probability go though neighbor cell(8 of them)
                                 if (x > 0 + 1 && y > 0 + 1 && x < maxX - 1 && y < maxY - 1) {
                                     //8 neighbors
@@ -166,12 +152,8 @@ public class Controller2 implements Initializable {
                                         for (int diffx = -1; diffx <= 1; diffx++) {
                                             int Nx = x + diffx;
                                             if (originalT[Nx][Ny] >= 0) {
-                                                Random rand = new Random();
-                                                double test = rand.nextDouble();
-                                                if (test < Double.parseDouble(infection.getText())) {
-                                                    infectedCounter++;
-                                                    updateCanvas(Nx * 10, Ny * 10, copy);
-                                                }
+                                                //infected
+                                                infected(Nx,Ny,copy);
                                             }
                                         }
                                     }
@@ -184,27 +166,8 @@ public class Controller2 implements Initializable {
                         illCounter=illCounter+infectedCounter-deathCounter-recoverCounter;
                         accumInfecC=accumInfecC+infectedCounter;
                         accumDeathcC=accumDeathcC+deathCounter;
-                        outputBox.setText("Day "+ days+" - \n ");
-                        if(infectSW.isSelected()){
-                            outputBox.setText(outputBox.getText()+infectedCounter+" people has been infected today; \n");
-                        }
-                        if(deadSW.isSelected()){
-                            outputBox.setText(outputBox.getText()+deathCounter+" people has dead; \n");
-                        }
-                        if(recoverySW.isSelected()){
-                            outputBox.setText(outputBox.getText()+recoverCounter+" people has been recovered today; \n");
-                        }
-                        if(illSW.isSelected()){
-                            outputBox.setText(outputBox.getText()+illCounter+" people are still ill today; \n" );
-
-                        }
-                        if(tInfectSW.isSelected()){
-                            outputBox.setText(outputBox.getText()+accumInfecC+" total amount of people has infected until today \n" );
-                        }
-                        if(tDeathSW.isSelected()){
-                            outputBox.setText(outputBox.getText()+accumDeathcC+" total amount of people has dead until today \n");
-
-                        }
+                        //output
+                        outFX();
                         days++;
                 }
                     }
@@ -216,7 +179,44 @@ public class Controller2 implements Initializable {
             timer.start();
 
     }
-    public void death(){
+    public void outFX(){
+        outputBox.setText("Day "+ days+" - \n");
+        if(infectSW.isSelected()){
+            outputBox.setText(outputBox.getText()+infectedCounter+" people has been infected today; \n");
+        }
+        if(deadSW.isSelected()){
+            outputBox.setText(outputBox.getText()+deathCounter+" people has dead; \n");
+        }
+        if(recoverySW.isSelected()){
+            outputBox.setText(outputBox.getText()+recoverCounter+" people has been recovered today; \n");
+        }
+        if(illSW.isSelected()){
+            outputBox.setText(outputBox.getText()+illCounter+" people are still ill today; \n" );
+
+        }
+        if(tInfectSW.isSelected()){
+            outputBox.setText(outputBox.getText()+accumInfecC+" total amount of people has infected until today \n" );
+        }
+        if(tDeathSW.isSelected()){
+            outputBox.setText(outputBox.getText()+accumDeathcC+" total amount of people has dead until today \n");
+        }
+        outputBox.setText(outputBox.getText()+"Red = Infected,Yello = Death, Green = Recovered \n");
+
+    }
+    //infected method
+    public boolean infected(int Nx,int Ny,boolean[][]copy){
+        Random rand = new Random();
+        double test = rand.nextDouble();
+        if (test < Double.parseDouble(infection.getText())) {
+            infectedCounter++;
+            updateCanvas(Nx * 10, Ny * 10, copy);
+            return true;
+        }
+        return false;
+    }
+
+    //death method
+    public boolean death(int x,int y){
         //death
         Random dRand = new Random();
         double dTest = dRand.nextDouble();
@@ -226,8 +226,24 @@ public class Controller2 implements Initializable {
             deathCounter++;
             gc.setFill(Color.YELLOW);
             gc.fillRect(x * 10, y * 10, 10, 10);
-            break;
+            return true;
         }
+        return false;
+    }
+
+    //healing method
+    public boolean healing(int x, int y){
+        originalT[x][y] = originalT[x][y] - 1;
+        if (originalT[x][y] == 0) {
+            original[x][y] = false;
+            originalT[x][y] = -1;
+            recoverCounter++;
+            gc.setFill(Color.GREEN);
+            gc.fillRect(x * 10, y * 10, 10, 10);
+            //gc.clearRect(x* 10,y* 10,10,10);
+            return true;
+        }
+        return false;
     }
 
     //before pressing the start button
@@ -252,10 +268,10 @@ public class Controller2 implements Initializable {
 
         //default value
         population.setText("5000");
-        infection.setText("0.75");
+        infection.setText("0.5");
         Min.setText("2");
-        Max.setText("7");
-        death.setText("0.3");
+        Max.setText("4");
+        death.setText("0.2");
         init.setText("1");
         //user mistake elimination
         outputBox.setText("Please input the initial value for each box. \n"+"For probability please use decimal number instead of percentage.\nFor example 0.75 instead of 75 percent. ");
