@@ -89,6 +89,7 @@ public class Controller2 implements Initializable {
         //initialization for start button
         int populationInt= Integer.parseInt(population.getText());
         outputBox.setText("Please click on the empty space on the right to choose where has the initial patient been detected. ");
+        //generate canvas depends on total population
         if (populationInt < 74 * 80) {
             maxX = (int) Math.floor(Math.sqrt(populationInt));
             maxY = populationInt / maxX;

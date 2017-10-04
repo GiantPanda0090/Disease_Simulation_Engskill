@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>sample.Controller2</OriginalElement>
+  <nodes>
+    <node x="323.5" y="0.0">javafx.fxml.Initializable</node>
+    <node x="0.0" y="113.0">sample.Controller2</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="sample.Controller2" target="javafx.fxml.Initializable">
+      <point x="0.0" y="-572.0" />
+      <point x="0.0" y="31.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.6186374314800314" x="484.0" y="628.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
