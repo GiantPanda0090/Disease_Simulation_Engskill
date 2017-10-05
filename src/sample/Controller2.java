@@ -65,8 +65,7 @@ public class Controller2 implements Initializable {
 
     /* non fxml init*/
     PrintWriter writer;
-
-
+    PrintWriter tableWriter;
 
 
     //output
@@ -93,6 +92,7 @@ public class Controller2 implements Initializable {
     int[][] originalT;
     Canvas display;
     int[][] mouseRec;
+    public int stopcounter;
     @FXML
     public void start(ActionEvent actionEvent) {
         //initialization for start button
@@ -110,6 +110,7 @@ public class Controller2 implements Initializable {
             StackPane cavasContainer = new StackPane(display);
             cavasContainer.prefWidthProperty().bind(display.widthProperty());
             cavasContainer.prefHeightProperty().bind(display.heightProperty());
+            cavasContainer.setAlignment(Pos.CENTER);
             cavasContainer.getStyleClass().add("canvas");
             pbox.getChildren().add(cavasContainer);
             pbox.setAlignment(Pos.CENTER);
@@ -132,6 +133,7 @@ public class Controller2 implements Initializable {
         final int[] xAxis = new int[1];
         final int[] yAxis = new int[1];
         int[][] record=new int[initInt][2];
+
         display.setOnMouseClicked(event -> {
              xAxis[0] =(int) event.getX()/10;
              yAxis[0] =(int) event.getY()/10;
@@ -152,9 +154,13 @@ public class Controller2 implements Initializable {
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
+                display.setOnMouseEntered(event -> {
+                    outputBox.setText("Mouse X: "+(int) event.getX()/10+"Mouse Y: "+(int) event.getY()/10);
+                });
                 //if total number of initilized people are successfully been input and accepted
                 if (counter>=initInt) {
                     display.setOnMouseClicked(null);
+                    display.setOnMouseEntered(null);
                     //start a new day per second
                     if (now - lastUpdate >= 1000_000_000) {
                         resetAllDCounter();
@@ -181,6 +187,7 @@ public class Controller2 implements Initializable {
                                             int Nx = x + diffx;
                                             if (originalT[Nx][Ny] >= 0) {
                                                 //infected
+                                                stopcounter=0;
                                                 infected(Nx,Ny,copy);
                                             }
                                         }
@@ -197,11 +204,16 @@ public class Controller2 implements Initializable {
                         //output
                         outFX();
                         days++;
-                        if(infectedCounter==0&&deathCounter==0&&recoverCounter==0&&illCounter==0){
+                        if(infectedCounter==0&&deathCounter==0&&recoverCounter==0&&illCounter==0) {
+                            stopcounter++;//quickfix
+                        }
+                        if (stopcounter> 10){
                             writer.close();
+                            tableWriter.close();
                             resetAllDCounter();
                             resetAllOth();
                             this.stop();
+                            outputBox.setText(outputBox.getText()+"\n Simulation has done!!");
                         }
                 }
                     }
@@ -215,24 +227,44 @@ public class Controller2 implements Initializable {
     }
     public void outFX(){
         outputBox.setText("Day "+ days+" - \n");
+        tableWriter.println(" - ");
+        tableWriter.print(" | ");
+        tableWriter.println(days+" | ");
+
         if(infectSW.isSelected()){
             outputBox.setText(outputBox.getText()+infectedCounter+" people has been infected today; \n");
+            tableWriter.println(" - ");
+            tableWriter.println(infectedCounter+" | ");
         }
         if(deadSW.isSelected()){
             outputBox.setText(outputBox.getText()+deathCounter+" people has dead today; \n");
+            tableWriter.println(" - ");
+            tableWriter.println(deathCounter+" | ");
         }
         if(recoverySW.isSelected()){
             outputBox.setText(outputBox.getText()+recoverCounter+" people has been recovered today; \n");
+            tableWriter.println(" - ");
+            tableWriter.println(recoverCounter+" | ");
+
         }
         if(illSW.isSelected()){
             outputBox.setText(outputBox.getText()+illCounter+" people are still ill today; \n" );
+            tableWriter.println(" - ");
+            tableWriter.println(illCounter+" | ");
+
 
         }
         if(tInfectSW.isSelected()){
             outputBox.setText(outputBox.getText()+accumInfecC+" total amount of people has infected until today \n" );
+            tableWriter.println(" - ");
+            tableWriter.println(accumInfecC+" | ");
+
         }
         if(tDeathSW.isSelected()){
             outputBox.setText(outputBox.getText()+accumDeathcC+" total amount of people has dead until today \n");
+            tableWriter.println(" - ");
+            tableWriter.println(accumDeathcC+" | ");
+
         }
         outputBox.setText(outputBox.getText()+"Red = Infected,Yello = Death, Green = Recovered \n");
         //log output data
@@ -287,6 +319,7 @@ public class Controller2 implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //geneneral initialization for overall application
+        stopcounter=0;
         days=0;
         deathCounter=0;
         infectedCounter=0;
@@ -303,6 +336,7 @@ public class Controller2 implements Initializable {
         tDeathSW.setSelected(true);
         try {
             writer = new PrintWriter("final_data.txt", "UTF-8");
+            tableWriter= new PrintWriter("final_data_table.txt", "UTF-8");
         }catch(Exception e ){
             System.err.println(e);
         }
@@ -324,6 +358,9 @@ public class Controller2 implements Initializable {
         maxY=0;
         lastUpdate=0;
         counter=0;
+        stopcounter=0;
+        accumDeathcC=0;
+        accumInfecC=0;
 
     }
     //reset the counters for yesterday
