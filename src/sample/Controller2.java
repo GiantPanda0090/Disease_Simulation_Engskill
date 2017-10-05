@@ -16,6 +16,7 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 
+import java.io.PrintWriter;
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
@@ -60,9 +61,13 @@ public class Controller2 implements Initializable {
     @FXML
     public ToggleButton tDeathSW;
 
+    /* non fxml init*/
+    PrintWriter writer;
 
 
 
+
+    //output
     private int days;
     private int deathCounter;
     private int infectedCounter;
@@ -70,6 +75,8 @@ public class Controller2 implements Initializable {
     private int illCounter;
     private int accumInfecC;
     private int accumDeathcC;
+
+
     public GraphicsContext gc;
     public int maxY;
     public int maxX;
@@ -120,7 +127,11 @@ public class Controller2 implements Initializable {
             original=copy;
             counter++;
         });
-
+        //end of initialization
+        //log input value into log file
+        writer.print("Result for Testing value: ");
+        writer.println("Total Population: "+ population.getText() +" Infected Probability: "+ infection.getText() + " Days of sickness duration: From "+ Min.getText()+" till "+ Max.getText() +" days.");
+        writer.println("Death Probability: "+ death.getText()+" Initial Sickness Porpulation: "+ init.getText());
         //start simulation
         AnimationTimer timer = new AnimationTimer() {
             @Override
@@ -170,6 +181,12 @@ public class Controller2 implements Initializable {
                         //output
                         outFX();
                         days++;
+                        if(infectedCounter==0&&deathCounter==0&&recoverCounter==0&&illCounter==0){
+                            writer.close();
+                            resetAllDCounter();
+                            resetAllOth();
+                            this.stop();
+                        }
                 }
                     }
                 }
@@ -186,7 +203,7 @@ public class Controller2 implements Initializable {
             outputBox.setText(outputBox.getText()+infectedCounter+" people has been infected today; \n");
         }
         if(deadSW.isSelected()){
-            outputBox.setText(outputBox.getText()+deathCounter+" people has dead; \n");
+            outputBox.setText(outputBox.getText()+deathCounter+" people has dead today; \n");
         }
         if(recoverySW.isSelected()){
             outputBox.setText(outputBox.getText()+recoverCounter+" people has been recovered today; \n");
@@ -202,7 +219,9 @@ public class Controller2 implements Initializable {
             outputBox.setText(outputBox.getText()+accumDeathcC+" total amount of people has dead until today \n");
         }
         outputBox.setText(outputBox.getText()+"Red = Infected,Yello = Death, Green = Recovered \n");
-
+        //log output data
+        writer.println(outputBox.getText());
+        writer.println("======================================================================================");
     }
     //infected method
     public boolean infected(int Nx,int Ny,boolean[][]copy){
@@ -266,7 +285,11 @@ public class Controller2 implements Initializable {
         illSW.setSelected(true);
         tInfectSW.setSelected(true);
         tDeathSW.setSelected(true);
-
+        try {
+            writer = new PrintWriter("final_data.txt", "UTF-8");
+        }catch(Exception e ){
+            System.err.println(e);
+        }
         //default value
         population.setText("5000");
         infection.setText("0.5");
@@ -276,6 +299,15 @@ public class Controller2 implements Initializable {
         init.setText("1");
         //user mistake elimination
         outputBox.setText("Please input the initial value for each box. \n"+"For probability please use decimal number instead of percentage.\nFor example 0.75 instead of 75 percent. ");
+    }
+    public void resetAllOth(){
+        original=null;
+        originalT=null;
+        mouseRec=null;
+        maxX=0;
+        maxY=0;
+        lastUpdate=0;
+
     }
     //reset the counters for yesterday
     public void resetAllDCounter(){
