@@ -1,5 +1,5 @@
-.display {
-    -fx-background-color: antiquewhite, white ;
-    -fx-background-insets: 0, 20 ;
-    -fx-padding: 20 ;
+.canvas {
+    -fx-background-color: black,white ;
+    -fx-background-insets: 0, 2 ;
+    -fx-padding: 2 ;
 }

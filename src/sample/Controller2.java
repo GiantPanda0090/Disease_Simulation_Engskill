@@ -8,12 +8,14 @@ import javafx.animation.AnimationTimer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
 import java.io.PrintWriter;
@@ -103,7 +105,21 @@ public class Controller2 implements Initializable {
             display=new Canvas(maxX*10,maxY*10);
             display.setId("display");
             gc = display.getGraphicsContext2D();
-            background.setCenter(display);
+            VBox vbox= new VBox();
+            HBox pbox=new HBox();
+            StackPane cavasContainer = new StackPane(display);
+            cavasContainer.prefWidthProperty().bind(display.widthProperty());
+            cavasContainer.prefHeightProperty().bind(display.heightProperty());
+            cavasContainer.getStyleClass().add("canvas");
+            pbox.getChildren().add(cavasContainer);
+            pbox.setAlignment(Pos.CENTER);
+            pbox.prefWidthProperty().bind(cavasContainer.widthProperty());
+            pbox.prefHeightProperty().bind(cavasContainer.heightProperty());
+            vbox.getChildren().add(pbox);
+            vbox.setAlignment(Pos.CENTER);
+            vbox.prefWidth(maxX*10);
+            vbox.prefHeight(maxY*10);
+            background.setCenter(vbox);
             original =new boolean[maxX][maxY];
             originalT=new int[maxX][maxY];
         } else {
@@ -307,6 +323,7 @@ public class Controller2 implements Initializable {
         maxX=0;
         maxY=0;
         lastUpdate=0;
+        counter=0;
 
     }
     //reset the counters for yesterday
