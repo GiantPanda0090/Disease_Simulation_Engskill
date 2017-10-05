@@ -1,0 +1,452 @@
+Result for Testing value: Total Population: 50 Infected Probability: 0.1 Days of sickness duration: From 4 till 8 days.
+Death Probability: 0 Initial Sickness Porpulation: 1
+Day 0 - 
+0 people has been infected today; 
+0 people has dead today; 
+0 people has been recovered today; 
+0 people are still ill today; 
+0 total amount of people has infected until today 
+0 total amount of people has dead until today 
+Red = Infected,Yello = Death, Green = Recovered 
+
+======================================================================================
+Day 1 - 
+2 people has been infected today; 
+0 people has dead today; 
+0 people has been recovered today; 
+2 people are still ill today; 
+2 total amount of people has infected until today 
+0 total amount of people has dead until today 
+Red = Infected,Yello = Death, Green = Recovered 
+
+======================================================================================
+Day 2 - 
+2 people has been infected today; 
+0 people has dead today; 
+0 people has been recovered today; 
+2 people are still ill today; 
+4 total amount of people has infected until today 
+0 total amount of people has dead until today 
+Red = Infected,Yello = Death, Green = Recovered 
+
+======================================================================================
+Day 3 - 
+4 people has been infected today; 
+0 people has dead today; 
+0 people has been recovered today; 
+4 people are still ill today; 
+8 total amount of people has infected until today 
+0 total amount of people has dead until today 
+Red = Infected,Yello = Death, Green = Recovered 
+
+======================================================================================
+Day 4 - 
+5 people has been infected today; 
+0 people has dead today; 
+0 people has been recovered today; 
+5 people are still ill today; 
+13 total amount of people has infected until today 
+0 total amount of people has dead until today 
+Red = Infected,Yello = Death, Green = Recovered 
+
+======================================================================================
+Day 5 - 
+5 people has been infected today; 
+0 people has dead today; 
+1 people has been recovered today; 
+4 people are still ill today; 
+18 total amount of people has infected until today 
+0 total amount of people has dead until today 
+Red = Infected,Yello = Death, Green = Recovered 
+
+======================================================================================
+Day 6 - 
+8 people has been infected today; 
+0 people has dead today; 
+1 people has been recovered today; 
+7 people are still ill today; 
+26 total amount of people has infected until today 
+0 total amount of people has dead until today 
+Red = Infected,Yello = Death, Green = Recovered 
+
+======================================================================================
+Day 7 - 
+8 people has been infected today; 
+0 people has dead today; 
+1 people has been recovered today; 
+7 people are still ill today; 
+34 total amount of people has infected until today 
+0 total amount of people has dead until today 
+Red = Infected,Yello = Death, Green = Recovered 
+
+======================================================================================
+Day 8 - 
+5 people has been infected today; 
+0 people has dead today; 
+1 people has been recovered today; 
+4 people are still ill today; 
+39 total amount of people has infected until today 
+0 total amount of people has dead until today 
+Red = Infected,Yello = Death, Green = Recovered 
+
+======================================================================================
+Day 9 - 
+8 people has been infected today; 
+0 people has dead today; 
+0 people has been recovered today; 
+8 people are still ill today; 
+47 total amount of people has infected until today 
+0 total amount of people has dead until today 
+Red = Infected,Yello = Death, Green = Recovered 
+
+======================================================================================
+Day 10 - 
+4 people has been infected today; 
+0 people has dead today; 
+3 people has been recovered today; 
+1 people are still ill today; 
+51 total amount of people has infected until today 
+0 total amount of people has dead until today 
+Red = Infected,Yello = Death, Green = Recovered 
+
+======================================================================================
+Day 11 - 
+4 people has been infected today; 
+0 people has dead today; 
+2 people has been recovered today; 
+2 people are still ill today; 
+55 total amount of people has infected until today 
+0 total amount of people has dead until today 
+Red = Infected,Yello = Death, Green = Recovered 
+
+======================================================================================
+Day 12 - 
+4 people has been infected today; 
+0 people has dead today; 
+0 people has been recovered today; 
+4 people are still ill today; 
+59 total amount of people has infected until today 
+0 total amount of people has dead until today 
+Red = Infected,Yello = Death, Green = Recovered 
+
+======================================================================================
+Day 13 - 
+2 people has been infected today; 
+0 people has dead today; 
+1 people has been recovered today; 
+1 people are still ill today; 
+61 total amount of people has infected until today 
+0 total amount of people has dead until today 
+Red = Infected,Yello = Death, Green = Recovered 
+
+======================================================================================
+Day 14 - 
+4 people has been infected today; 
+0 people has dead today; 
+3 people has been recovered today; 
+1 people are still ill today; 
+65 total amount of people has infected until today 
+0 total amount of people has dead until today 
+Red = Infected,Yello = Death, Green = Recovered 
+
+======================================================================================
+Day 15 - 
+3 people has been infected today; 
+0 people has dead today; 
+3 people has been recovered today; 
+0 people are still ill today; 
+68 total amount of people has infected until today 
+0 total amount of people has dead until today 
+Red = Infected,Yello = Death, Green = Recovered 
+
+======================================================================================
+Day 16 - 
+1 people has been infected today; 
+0 people has dead today; 
+1 people has been recovered today; 
+0 people are still ill today; 
+69 total amount of people has infected until today 
+0 total amount of people has dead until today 
+Red = Infected,Yello = Death, Green = Recovered 
+
+======================================================================================
+Day 17 - 
+4 people has been infected today; 
+0 people has dead today; 
+1 people has been recovered today; 
+3 people are still ill today; 
+73 total amount of people has infected until today 
+0 total amount of people has dead until today 
+Red = Infected,Yello = Death, Green = Recovered 
+
+======================================================================================
+Day 18 - 
+2 people has been infected today; 
+0 people has dead today; 
+2 people has been recovered today; 
+0 people are still ill today; 
+75 total amount of people has infected until today 
+0 total amount of people has dead until today 
+Red = Infected,Yello = Death, Green = Recovered 
+
+======================================================================================
+Day 19 - 
+2 people has been infected today; 
+0 people has dead today; 
+0 people has been recovered today; 
+2 people are still ill today; 
+77 total amount of people has infected until today 
+0 total amount of people has dead until today 
+Red = Infected,Yello = Death, Green = Recovered 
+
+======================================================================================
+Day 20 - 
+1 people has been infected today; 
+0 people has dead today; 
+0 people has been recovered today; 
+1 people are still ill today; 
+78 total amount of people has infected until today 
+0 total amount of people has dead until today 
+Red = Infected,Yello = Death, Green = Recovered 
+
+======================================================================================
+Day 21 - 
+1 people has been infected today; 
+0 people has dead today; 
+2 people has been recovered today; 
+-1 people are still ill today; 
+79 total amount of people has infected until today 
+0 total amount of people has dead until today 
+Red = Infected,Yello = Death, Green = Recovered 
+
+======================================================================================
+Day 22 - 
+1 people has been infected today; 
+0 people has dead today; 
+1 people has been recovered today; 
+0 people are still ill today; 
+80 total amount of people has infected until today 
+0 total amount of people has dead until today 
+Red = Infected,Yello = Death, Green = Recovered 
+
+======================================================================================
+Day 23 - 
+0 people has been infected today; 
+0 people has dead today; 
+2 people has been recovered today; 
+-2 people are still ill today; 
+80 total amount of people has infected until today 
+0 total amount of people has dead until today 
+Red = Infected,Yello = Death, Green = Recovered 
+
+======================================================================================
+Day 24 - 
+0 people has been infected today; 
+0 people has dead today; 
+0 people has been recovered today; 
+0 people are still ill today; 
+80 total amount of people has infected until today 
+0 total amount of people has dead until today 
+Red = Infected,Yello = Death, Green = Recovered 
+
+======================================================================================
+Day 25 - 
+0 people has been infected today; 
+0 people has dead today; 
+0 people has been recovered today; 
+0 people are still ill today; 
+80 total amount of people has infected until today 
+0 total amount of people has dead until today 
+Red = Infected,Yello = Death, Green = Recovered 
+
+======================================================================================
+Day 26 - 
+1 people has been infected today; 
+0 people has dead today; 
+1 people has been recovered today; 
+0 people are still ill today; 
+81 total amount of people has infected until today 
+0 total amount of people has dead until today 
+Red = Infected,Yello = Death, Green = Recovered 
+
+======================================================================================
+Day 27 - 
+1 people has been infected today; 
+0 people has dead today; 
+0 people has been recovered today; 
+1 people are still ill today; 
+82 total amount of people has infected until today 
+0 total amount of people has dead until today 
+Red = Infected,Yello = Death, Green = Recovered 
+
+======================================================================================
+Day 28 - 
+1 people has been infected today; 
+0 people has dead today; 
+0 people has been recovered today; 
+1 people are still ill today; 
+83 total amount of people has infected until today 
+0 total amount of people has dead until today 
+Red = Infected,Yello = Death, Green = Recovered 
+
+======================================================================================
+Day 29 - 
+0 people has been infected today; 
+0 people has dead today; 
+0 people has been recovered today; 
+0 people are still ill today; 
+83 total amount of people has infected until today 
+0 total amount of people has dead until today 
+Red = Infected,Yello = Death, Green = Recovered 
+
+======================================================================================
+Day 30 - 
+1 people has been infected today; 
+0 people has dead today; 
+0 people has been recovered today; 
+1 people are still ill today; 
+84 total amount of people has infected until today 
+0 total amount of people has dead until today 
+Red = Infected,Yello = Death, Green = Recovered 
+
+======================================================================================
+Day 31 - 
+1 people has been infected today; 
+0 people has dead today; 
+0 people has been recovered today; 
+1 people are still ill today; 
+85 total amount of people has infected until today 
+0 total amount of people has dead until today 
+Red = Infected,Yello = Death, Green = Recovered 
+
+======================================================================================
+Day 32 - 
+0 people has been infected today; 
+0 people has dead today; 
+0 people has been recovered today; 
+0 people are still ill today; 
+85 total amount of people has infected until today 
+0 total amount of people has dead until today 
+Red = Infected,Yello = Death, Green = Recovered 
+
+======================================================================================
+Day 33 - 
+0 people has been infected today; 
+0 people has dead today; 
+1 people has been recovered today; 
+-1 people are still ill today; 
+85 total amount of people has infected until today 
+0 total amount of people has dead until today 
+Red = Infected,Yello = Death, Green = Recovered 
+
+======================================================================================
+Day 34 - 
+0 people has been infected today; 
+0 people has dead today; 
+0 people has been recovered today; 
+0 people are still ill today; 
+85 total amount of people has infected until today 
+0 total amount of people has dead until today 
+Red = Infected,Yello = Death, Green = Recovered 
+
+======================================================================================
+Day 35 - 
+0 people has been infected today; 
+0 people has dead today; 
+0 people has been recovered today; 
+0 people are still ill today; 
+85 total amount of people has infected until today 
+0 total amount of people has dead until today 
+Red = Infected,Yello = Death, Green = Recovered 
+
+======================================================================================
+Day 36 - 
+0 people has been infected today; 
+0 people has dead today; 
+0 people has been recovered today; 
+0 people are still ill today; 
+85 total amount of people has infected until today 
+0 total amount of people has dead until today 
+Red = Infected,Yello = Death, Green = Recovered 
+
+======================================================================================
+Day 37 - 
+0 people has been infected today; 
+0 people has dead today; 
+0 people has been recovered today; 
+0 people are still ill today; 
+85 total amount of people has infected until today 
+0 total amount of people has dead until today 
+Red = Infected,Yello = Death, Green = Recovered 
+
+======================================================================================
+Day 38 - 
+0 people has been infected today; 
+0 people has dead today; 
+1 people has been recovered today; 
+-1 people are still ill today; 
+85 total amount of people has infected until today 
+0 total amount of people has dead until today 
+Red = Infected,Yello = Death, Green = Recovered 
+
+======================================================================================
+Day 39 - 
+0 people has been infected today; 
+0 people has dead today; 
+0 people has been recovered today; 
+0 people are still ill today; 
+85 total amount of people has infected until today 
+0 total amount of people has dead until today 
+Red = Infected,Yello = Death, Green = Recovered 
+
+======================================================================================
+Day 40 - 
+0 people has been infected today; 
+0 people has dead today; 
+0 people has been recovered today; 
+0 people are still ill today; 
+85 total amount of people has infected until today 
+0 total amount of people has dead until today 
+Red = Infected,Yello = Death, Green = Recovered 
+
+======================================================================================
+Day 41 - 
+0 people has been infected today; 
+0 people has dead today; 
+0 people has been recovered today; 
+0 people are still ill today; 
+85 total amount of people has infected until today 
+0 total amount of people has dead until today 
+Red = Infected,Yello = Death, Green = Recovered 
+
+======================================================================================
+Day 42 - 
+0 people has been infected today; 
+0 people has dead today; 
+0 people has been recovered today; 
+0 people are still ill today; 
+85 total amount of people has infected until today 
+0 total amount of people has dead until today 
+Red = Infected,Yello = Death, Green = Recovered 
+
+======================================================================================
+Day 43 - 
+0 people has been infected today; 
+0 people has dead today; 
+0 people has been recovered today; 
+0 people are still ill today; 
+85 total amount of people has infected until today 
+0 total amount of people has dead until today 
+Red = Infected,Yello = Death, Green = Recovered 
+
+======================================================================================
+Day 44 - 
+0 people has been infected today; 
+0 people has dead today; 
+0 people has been recovered today; 
+0 people are still ill today; 
+85 total amount of people has infected until today 
+0 total amount of people has dead until today 
+Red = Infected,Yello = Death, Green = Recovered 
+
+======================================================================================
