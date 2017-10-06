@@ -9,6 +9,7 @@ To be able to compile the program, it is required to have to Official Oracle Jav
 1.8.0 installed with JavaFX plug in.OpenJDK will not work unless use build OpenJFX on
 the server. For how to do it please visit this
 website-https://wiki.openjdk.java.net/display/OpenJFX/Building+OpenJFX.[1] 
+
 User should be able to compile this program in all IDE but Intellij is strongly
 recommended because all the setting has been preset well by the Intellij.
 Input the initial Sickness population, Probability of infection , minimum and maximum
