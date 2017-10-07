@@ -6,7 +6,7 @@ qi5@kth.se, hussamh@kth.se
 
 How to compile and run/use the program<br>
 To be able to compile the program, it is required to have to Official Oracle Java JDK
-1.8.0 installed with JavaFX plug in.OpenJDK will not work unless use build OpenJFX on
+1.8.0 installed with JavaFX plug in.OpenJDK will not work unless user build OpenJFX on
 the server. For how to do it please visit this
 website-https://wiki.openjdk.java.net/display/OpenJFX/Building+OpenJFX.[1] <br>
 User should be able to compile this program in all IDE but Intellij is strongly
