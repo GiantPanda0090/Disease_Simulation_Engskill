@@ -1,6 +1,11 @@
 language: java
-jdk:
-  - oraclejdk8
+
+branches:
+  only:
+  - master
+  
+notifications:
+  email: false
   
 before_install:
     - sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
@@ -12,9 +17,6 @@ before_install:
     - export JAVA_HOME=/home/travis/.linuxbrew/Cellar/jdk/1.8.0-40
     
 addons:
- apt:
-    packages:
-      - oracle-java8-installer
   sonarcloud:
     organization: "giantpanda0090-github"
     token: $SONAR_TOKEN
