@@ -3,9 +3,9 @@ addons:
   sonarcloud:
     organization: "giantpanda0090-github"
     token:
-      secure: SONAR_TOKEN
+      secure:$SONAR_TOKEN
     github_token:
-      secure: GITHUB_TOKEN
+      secure:$GITHUB_TOKEN
       branches:
       - master
 script:
