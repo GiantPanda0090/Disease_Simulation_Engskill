@@ -1,1 +1,12 @@
 language: java
+addons:
+  sonarcloud:
+    organization: "giantpanda0090-github"
+    token:
+      secure: 4e377f881657ad3fad320a3420c42a4291b97e91
+    github_token:
+      secure: f96099951bee4b6d506fffdb5458e34647b42b24 
+      branches:
+      - master
+script:
+  - sonar-scanner
