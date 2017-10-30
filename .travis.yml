@@ -1,19 +1,9 @@
 language: java
 
 jdk:
-  - oraclejdk8
-
-branches:
-  only:
-  - master
-  
+  - oraclejdk8  
     
 addons:
-addons:
-  apt:
-    packages:
-      - oracle-java8-installer
-      
   sonarcloud:
     organization: "giantpanda0090-github"
     token: $SONAR_TOKEN
