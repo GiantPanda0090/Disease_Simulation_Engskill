@@ -10,5 +10,4 @@ addons:
     github_token: $GITHUB_TOKEN
     
 script:
-  - build-wrapper --out-dir bw-outputs ./build.sh
   - sonar-scanner
