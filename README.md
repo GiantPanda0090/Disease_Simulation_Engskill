@@ -22,5 +22,7 @@ successfully spawned. The final data can be found at final_data.txt file. The fi
 been set a good formating and record the result per day. Daily results can also been
 found in the output window at the left cornor.<br>
 
+Pre compiled Jar file is in target folder
+
 1 Anon, (2017). [online] Available at: https://wiki.openjdk.java.net/display/OpenJFX/Building+OpenJFX.
 [Accessed 5 Oct. 2017].
