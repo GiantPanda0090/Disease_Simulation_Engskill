@@ -24,7 +24,7 @@ import java.util.Random;
 import java.util.ResourceBundle;
 
 /**
- * Created by lqsch on 2017-10-01.
+ * Created by lqsch on  2017-10-01.
  */
 public class Controller2 implements Initializable {
     @FXML
@@ -71,13 +71,15 @@ public class Controller2 implements Initializable {
     //output
     private int days;
     private int deathCounter;
-    private int infectedCounter;
+    private static int infectedCounter;
     private int recoverCounter;
     private int illCounter;
     private int accumInfecC;
     private int accumDeathcC;
-
-
+    private int effectedCounter;
+    private int resetFlag;
+    private int[] xAxispub = new int[1];
+    private int[] yAxispub = new int[1];
     public GraphicsContext gc;
     public int maxY;
     public int maxX;
@@ -95,137 +97,170 @@ public class Controller2 implements Initializable {
     public int stopcounter;
     @FXML
     public void start(ActionEvent actionEvent) {
-        //initialization for start button
-        int populationInt= Integer.parseInt(population.getText());
-        outputBox.setText("Please click on the empty space on the right to choose where has the initial patient been detected. ");
+        simulation(Double.parseDouble(infection.getText()));
+    }
+
+
+    public void simulation(double infectionprob) {
+    start(infectionprob);
+
+    }
+
+    public void start(double infectionprob) {
+
+            //initialization for start button
+            int populationInt = Integer.parseInt(population.getText());
+            outputBox.setText("Please click on the empty space on the right to choose where has the initial patient been detected. ");
+        outputBox.setText(outputBox.getText() + "running"+infectionprob +" round \n ");
         //generate canvas depends on total population
-        if (populationInt < 74 * 80) {
-            maxX = (int) Math.floor(Math.sqrt(populationInt));
-            maxY = populationInt / maxX;
-            display=new Canvas(maxX*10,maxY*10);
-            display.setId("display");
-            gc = display.getGraphicsContext2D();
-            VBox vbox= new VBox();
-            HBox pbox=new HBox();
-            StackPane cavasContainer = new StackPane(display);
-            cavasContainer.prefWidthProperty().bind(display.widthProperty());
-            cavasContainer.prefHeightProperty().bind(display.heightProperty());
-            cavasContainer.setAlignment(Pos.CENTER);
-            cavasContainer.getStyleClass().add("canvas");
-            pbox.getChildren().add(cavasContainer);
-            pbox.setAlignment(Pos.CENTER);
-            pbox.prefWidthProperty().bind(cavasContainer.widthProperty());
-            pbox.prefHeightProperty().bind(cavasContainer.heightProperty());
-            vbox.getChildren().add(pbox);
-            vbox.setAlignment(Pos.CENTER);
-            vbox.prefWidth(maxX*10);
-            vbox.prefHeight(maxY*10);
-            background.setCenter(vbox);
-            original =new boolean[maxX][maxY];
-            originalT=new int[maxX][maxY];
-        } else {
-            outputBox.setText("Population size is too big. it should be less that 70*77 ");
-            return;
-        }
-        int initInt= Integer.parseInt(init.getText());
-        mouseRec= new int[initInt][2];
-        //initialize people get sick and where are they
-        final int[] xAxis = new int[1];
-        final int[] yAxis = new int[1];
-        int[][] record=new int[initInt][2];
+            if (populationInt < 74 * 80) {
+                maxX = (int) Math.sqrt(populationInt);
+                maxY = populationInt / maxX;
+                display = new Canvas(maxX *  50, maxY *  50);
+                display.setId("display");
+                gc = display.getGraphicsContext2D();
+                VBox vbox = new VBox();
+                HBox pbox = new HBox();
+                StackPane cavasContainer = new StackPane(display);
+                cavasContainer.prefWidthProperty().bind(display.widthProperty());
+                cavasContainer.prefHeightProperty().bind(display.heightProperty());
+                cavasContainer.setAlignment(Pos.CENTER);
+                cavasContainer.getStyleClass().add("canvas");
+                pbox.getChildren().add(cavasContainer);
+                pbox.setAlignment(Pos.CENTER);
+                pbox.prefWidthProperty().bind(cavasContainer.widthProperty());
+                pbox.prefHeightProperty().bind(cavasContainer.heightProperty());
+                vbox.getChildren().add(pbox);
+                vbox.setAlignment(Pos.CENTER);
+                vbox.prefWidth(maxX *  50);
+                vbox.prefHeight(maxY *  50);
+                background.setCenter(vbox);
+                original = new boolean[maxX][maxY];
+                originalT = new int[maxX][maxY];
+            } else {
+                outputBox.setText("Population size is too big. it should be less that 70*77 ");
+                return;
+            }
 
-        display.setOnMouseClicked(event -> {
-             xAxis[0] =(int) event.getX()/10;
-             yAxis[0] =(int) event.getY()/10;
-             xAxis[0]=xAxis[0]*10;
-             yAxis[0]=yAxis[0]*10;
-            boolean[][] copy =original;
-            infectedCounter++;
-            updateCanvas(xAxis[0], yAxis[0],copy);
-            original=copy;
-            counter++;
-        });
-        //end of initialization
-        //log input value into log file
-        writer.print("Result for Testing value: ");
-        writer.println("Total Population: "+ population.getText() +" Infected Probability: "+ infection.getText() + " Days of sickness duration: From "+ Min.getText()+" till "+ Max.getText() +" days.");
-        writer.println("Death Probability: "+ death.getText()+" Initial Sickness Porpulation: "+ init.getText());
-        //start simulation
-        AnimationTimer timer = new AnimationTimer() {
-            @Override
-            public void handle(long now) {
-                display.setOnMouseEntered(event -> {
-                    outputBox.setText("Mouse X: "+(int) event.getX()/10+"Mouse Y: "+(int) event.getY()/10);
+            int initInt = Integer.parseInt(init.getText());
+            mouseRec = new int[initInt][2];
+            //initialize people get sick and where are they
+            final int[] xAxis = new int[1];
+            final int[] yAxis = new int[1];
+            int[][] record = new int[initInt][2];
+            if (resetFlag == 0) {
+                display.setOnMouseClicked(event -> {
+                    xAxis[0] = (int) event.getX() /  50;
+                    yAxis[0] = (int) event.getY() /  50;
+                    xAxis[0] = xAxis[0] *  50;
+                    yAxis[0] = yAxis[0] *  50;
+                    xAxispub[0] = xAxis[0];
+                    yAxispub[0] = yAxis[0];
+                    boolean[][] copy = original;
+                    infectedCounter++;
+                    updateCanvas(xAxis[0], yAxis[0], copy);
+                    original = copy;
+                    counter++;
                 });
-                //if total number of initilized people are successfully been input and accepted
-                if (counter>=initInt) {
-                    display.setOnMouseClicked(null);
-                    display.setOnMouseEntered(null);
-                    //start a new day per second
-                    if (now - lastUpdate >= 1000_000_000) {
-                        resetAllDCounter();
-                        for (int y = 0; y < maxY; y++) {
-                        for (int x = 0; x < maxX; x++) {
-                            if (original[x][y] == true) {
+            } else {
+                xAxis[0] = xAxispub[0];
+                yAxis[0] = yAxispub[0];
+                boolean[][] copy = original;
+                infectedCounter++;
+                updateCanvas(xAxis[0], yAxis[0], copy);
+                original = copy;
+                counter++;
+            }
+            //end of initialization
+            //log input value into log file
+            writer.print("*Result for Testing value: ");
+            writer.println("*Total Population: " + population.getText() + " Infected Probability: " + infectionprob + " Days of sickness duration: From " + Min.getText() + " till " + Max.getText() + " days.");
+            writer.println("*Death Probability: " + death.getText() + " Initial Sickness Porpulation: " + init.getText());
+            //start simulation
+            AnimationTimer timer = new AnimationTimer() {
+                @Override
+                public void handle(long now) {
+                    display.setOnMouseEntered(event -> {
+                        outputBox.setText("Mouse X: " + (int) event.getX() /  50 + "Mouse Y: " + (int) event.getY() /  50);
+                    });
+                    //if total number of initilized people are successfully been input and accepted
+                    if (counter >= initInt) {
+                        display.setOnMouseClicked(null);
+                        display.setOnMouseEntered(null);
+                        //start a new day per second
+                        if (now - lastUpdate >= 10) {
+                            resetAllDCounter();
 
-                                //death
-                                if(death(x,y)){
-                                    break;
-                                }
+                            for (int y = 0; y < maxY; y++) {
+                                for (int x = 0; x < maxX; x++) {
+                                    if (original[x][y] == true) {
+                                        //death
+                                        if (death(x, y)) {
+                                            break;
+                                        }
 
-                                //healing
-                               if (healing(x,y)){
-                                    break;
-                               }
-                                //probability go though neighbor cell(8 of them)
-                                if (x > 0 + 1 && y > 0 + 1 && x < maxX - 1 && y < maxY - 1) {
-                                    //8 neighbors
-                                    boolean[][] copy = original;//copy
-                                    for (int diffy = -1; diffy <= 1; diffy++) {
-                                        int Ny = y + diffy;
-                                        for (int diffx = -1; diffx <= 1; diffx++) {
-                                            int Nx = x + diffx;
-                                            if (originalT[Nx][Ny] >= 0) {
-                                                //infected
-                                                stopcounter=0;
-                                                infected(Nx,Ny,copy);
+                                        //healing
+                                        if (healing(x, y)) {
+                                            break;
+                                        }
+                                        //probability go though neighbor cell(8 of them)
+                                        if (x > 0  && y > 0 && x < maxX - 1 && y < maxY - 1) {
+                                            //8 neighbors
+                                            boolean[][] copy = original;//copy
+                                            for (double diffy = -1; diffy <= 1; diffy++) {
+                                                double Ny = y + diffy;
+                                                for (double diffx = -1; diffx <= 1; diffx++) {
+                                                    double Nx = x + diffx;
+                                                    if (originalT[(int)Nx][(int)Ny] >= 0) {
+                                                        //infected
+                                                        stopcounter = 0;
+                                                        infected((int)Nx,(int) Ny, copy, infectionprob);
+                                                    }
+                                                }
                                             }
+                                            original = copy;
                                         }
                                     }
-                                    original = copy;
+                                }
+                            }
+                            lastUpdate = now;
+                            illCounter = illCounter + infectedCounter - deathCounter - recoverCounter;
+                            effectedCounter = effectedCounter + infectedCounter;
+                            accumDeathcC = accumDeathcC + deathCounter;
+
+                            //output
+                            outFX(populationInt);
+                            days++;
+                            infectedCounter = 0;
+                            if (infectedCounter == 0 && deathCounter == 0 && recoverCounter == 0 && illCounter == 0) {
+                                stopcounter++;//quickfix
+                            }
+                            //terminate
+                            if (stopcounter > 1) {
+                                writer.println(infectionprob+" "+accumInfecC/ 50);
+                                resetAllDCounter();
+                                resetAllOth();
+                                this.stop();
+                                outputBox.setText(outputBox.getText() + "\n Simulation has done!!");
+                                resetFlag = 1;
+                                if(infectionprob<=1) {
+                                    Controller2.this.start(infectionprob + 0.05);
+                                }else {
+                                    writer.close();
+                                    resetFlag=0;
                                 }
                             }
                         }
                     }
-                        lastUpdate = now ;
-                        illCounter=illCounter+infectedCounter-deathCounter-recoverCounter;
-                        accumInfecC=accumInfecC+infectedCounter;
-                        accumDeathcC=accumDeathcC+deathCounter;
-                        //output
-                        outFX();
-                        days++;
-                        if(infectedCounter==0&&deathCounter==0&&recoverCounter==0&&illCounter==0) {
-                            stopcounter++;//quickfix
-                        }
-                        if (stopcounter> 10){
-                            writer.close();
-                            tableWriter.close();
-                            resetAllDCounter();
-                            resetAllOth();
-                            this.stop();
-                            outputBox.setText(outputBox.getText()+"\n Simulation has done!!");
-                        }
-                }
-                    }
                 }
 
 
-        };
+            };
 
             timer.start();
-
+return;
     }
-    public void outFX(){
+    public void outFX(int populationInt){
         outputBox.setText("Day "+ days+" - \n");
         tableWriter.println(" - ");
         tableWriter.print(" | ");
@@ -255,7 +290,7 @@ public class Controller2 implements Initializable {
 
         }
         if(tInfectSW.isSelected()){
-            outputBox.setText(outputBox.getText()+accumInfecC+" total amount of people has infected until today \n" );
+            outputBox.setText(outputBox.getText()+accumInfecC/ 50+" total amount of people has infected until today \n" );
             tableWriter.println(" - ");
             tableWriter.println(accumInfecC+" | ");
 
@@ -266,18 +301,21 @@ public class Controller2 implements Initializable {
             tableWriter.println(accumDeathcC+" | ");
 
         }
+        if (accumInfecC/ 50>populationInt/2){
+            outputBox.setText(outputBox.getText()+"EPIDEMIC!!!!!!!!!\n");
+        }
+        outputBox.setText(outputBox.getText()+effectedCounter+" people effected until today\n");
         outputBox.setText(outputBox.getText()+"Red = Infected,Yello = Death, Green = Recovered \n");
         //log output data
-        writer.println(outputBox.getText());
-        writer.println("======================================================================================");
     }
     //infected method
-    public boolean infected(int Nx,int Ny,boolean[][]copy){
+    public boolean infected(int Nx,int Ny,boolean[][]copy,double infectionprob){
         Random rand = new Random();
         double test = rand.nextDouble();
-        if (test < Double.parseDouble(infection.getText())) {
+        if (test < infectionprob) {
             infectedCounter++;
-            updateCanvas(Nx * 10, Ny * 10, copy);
+            accumInfecC++;
+            updateCanvas(Nx *  50, Ny *  50, copy);
             return true;
         }
         return false;
@@ -293,7 +331,7 @@ public class Controller2 implements Initializable {
             original[x][y] = false;
             deathCounter++;
             gc.setFill(Color.YELLOW);
-            gc.fillRect(x * 10, y * 10, 10, 10);
+            gc.fillRect(x *  50, y *  50,  50,  50);
             return true;
         }
         return false;
@@ -307,7 +345,7 @@ public class Controller2 implements Initializable {
             originalT[x][y] = -1;
             recoverCounter++;
             gc.setFill(Color.GREEN);
-            gc.fillRect(x * 10, y * 10, 10, 10);
+            gc.fillRect(x *  50, y *  50,  50,  50);
             //gc.clearRect(x* 10,y* 10,10,10);
             return true;
         }
@@ -319,6 +357,7 @@ public class Controller2 implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //geneneral initialization for overall application
+        resetFlag=0;
         stopcounter=0;
         days=0;
         deathCounter=0;
@@ -328,6 +367,7 @@ public class Controller2 implements Initializable {
         accumInfecC=0;
         accumDeathcC=0;
         lastUpdate = 0;
+        effectedCounter=0;
         infectSW.setSelected(true);
         deadSW.setSelected(true);
         recoverySW.setSelected(true);
@@ -335,7 +375,7 @@ public class Controller2 implements Initializable {
         tInfectSW.setSelected(true);
         tDeathSW.setSelected(true);
         try {
-            writer = new PrintWriter("final_data.txt", "UTF-8");
+            writer = new PrintWriter("final_data.dat", "UTF-8");
             tableWriter= new PrintWriter("final_data_table.txt", "UTF-8");
         }catch(Exception e ){
             System.err.println(e);
@@ -361,6 +401,9 @@ public class Controller2 implements Initializable {
         stopcounter=0;
         accumDeathcC=0;
         accumInfecC=0;
+        effectedCounter=0;
+        days=0;
+
 
     }
     //reset the counters for yesterday
@@ -376,12 +419,12 @@ public class Controller2 implements Initializable {
             final int xReal = x;
             final int yReal = y;
             gc.setFill(Color.RED);
-            gc.fillRect(xReal, yReal, 10, 10);
-            copy[x / 10][y / 10] = true;
+            gc.fillRect(xReal, yReal,  50,  50);
+            copy[x /  50][y /  50] = true;
        int minT= Integer.parseInt(Min.getText());
        int maxT=Integer.parseInt(Max.getText());
        Random durationR= new Random();
-        originalT[x/10][y/10]=durationR.nextInt(maxT-minT) + minT;
+        originalT[x/ 50][y/ 50]=durationR.nextInt(maxT-minT) + minT;
 
     }
 
