@@ -1,4 +1,6 @@
 # EngineeringSkill_Disease
+![Build Status](https://travis-ci.org/GiantPanda0090/Disease_Simulation_Engskill.svg?branch=master)
+
 This repository is for KTH Engineering skill II1304 Modelling Yr3 Assignment 3<br>
 Creator: Qi Li<br>
 Group Member:Qi Li, Hussam Aladdin<br>
@@ -19,6 +21,8 @@ automatically start simulation after the total amount of initial sickness people
 successfully spawned. The final data can be found at final_data.txt file. The file has
 been set a good formating and record the result per day. Daily results can also been
 found in the output window at the left cornor.<br>
+
+Pre compiled Jar file is in target folder
 
 1 Anon, (2017). [online] Available at: https://wiki.openjdk.java.net/display/OpenJFX/Building+OpenJFX.
 [Accessed 5 Oct. 2017].
