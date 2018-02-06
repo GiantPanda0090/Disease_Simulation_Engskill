@@ -186,7 +186,7 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="51.0" prefWidth="385.0">
                      <children>
-                        <Label prefHeight="48.0" prefWidth="384.0" text="Disease Effection Simulator " textAlignment="CENTER">
+                        <Label prefHeight="48.0" prefWidth="384.0" text="Disease infection Simulator " textAlignment="CENTER">
                            <font>
                               <Font size="31.0" />
                            </font>

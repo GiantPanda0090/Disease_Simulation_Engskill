@@ -1,33 +1,11 @@
-*Result for Testing value: *Total Population: 200 Infected Probability: 0.5 Days of sickness duration: From 2 till 4 days.
-*Death Probability: 0.2 Initial Sickness Porpulation: 1
-0.5 0
-*Result for Testing value: *Total Population: 200 Infected Probability: 0.55 Days of sickness duration: From 2 till 4 days.
-*Death Probability: 0.2 Initial Sickness Porpulation: 1
-0.55 25
-*Result for Testing value: *Total Population: 200 Infected Probability: 0.6000000000000001 Days of sickness duration: From 2 till 4 days.
-*Death Probability: 0.2 Initial Sickness Porpulation: 1
-0.6000000000000001 0
-*Result for Testing value: *Total Population: 200 Infected Probability: 0.6500000000000001 Days of sickness duration: From 2 till 4 days.
-*Death Probability: 0.2 Initial Sickness Porpulation: 1
-0.6500000000000001 35
-*Result for Testing value: *Total Population: 200 Infected Probability: 0.7000000000000002 Days of sickness duration: From 2 till 4 days.
-*Death Probability: 0.2 Initial Sickness Porpulation: 1
-0.7000000000000002 37
-*Result for Testing value: *Total Population: 200 Infected Probability: 0.7500000000000002 Days of sickness duration: From 2 till 4 days.
-*Death Probability: 0.2 Initial Sickness Porpulation: 1
-0.7500000000000002 39
-*Result for Testing value: *Total Population: 200 Infected Probability: 0.8000000000000003 Days of sickness duration: From 2 till 4 days.
-*Death Probability: 0.2 Initial Sickness Porpulation: 1
-0.8000000000000003 0
-*Result for Testing value: *Total Population: 200 Infected Probability: 0.8500000000000003 Days of sickness duration: From 2 till 4 days.
-*Death Probability: 0.2 Initial Sickness Porpulation: 1
-0.8500000000000003 41
-*Result for Testing value: *Total Population: 200 Infected Probability: 0.9000000000000004 Days of sickness duration: From 2 till 4 days.
-*Death Probability: 0.2 Initial Sickness Porpulation: 1
-0.9000000000000004 59
-*Result for Testing value: *Total Population: 200 Infected Probability: 0.9500000000000004 Days of sickness duration: From 2 till 4 days.
-*Death Probability: 0.2 Initial Sickness Porpulation: 1
-0.9500000000000004 0
-*Result for Testing value: *Total Population: 200 Infected Probability: 1.0000000000000004 Days of sickness duration: From 2 till 4 days.
-*Death Probability: 0.2 Initial Sickness Porpulation: 1
-1.0000000000000004 55
+0.0 0
+0.1 3
+0.2 32
+0.30000000000000004 35
+0.4 35
+0.5 35
+0.6 35
+0.7 35
+0.7999999999999999 35
+0.8999999999999999 35
+0.9999999999999999 35

@@ -69,6 +69,7 @@ public class Controller2 implements Initializable {
 
 
     //output
+    private Random rand = new Random();
     private int days;
     private int deathCounter;
     private static int infectedCounter;
@@ -173,9 +174,6 @@ public class Controller2 implements Initializable {
             }
             //end of initialization
             //log input value into log file
-            writer.print("*Result for Testing value: ");
-            writer.println("*Total Population: " + population.getText() + " Infected Probability: " + infectionprob + " Days of sickness duration: From " + Min.getText() + " till " + Max.getText() + " days.");
-            writer.println("*Death Probability: " + death.getText() + " Initial Sickness Porpulation: " + init.getText());
             //start simulation
             AnimationTimer timer = new AnimationTimer() {
                 @Override
@@ -188,7 +186,7 @@ public class Controller2 implements Initializable {
                         display.setOnMouseClicked(null);
                         display.setOnMouseEntered(null);
                         //start a new day per second
-                        if (now - lastUpdate >= 10) {
+                        if (now - lastUpdate >= 1000_000_00) {
                             resetAllDCounter();
 
                             for (int y = 0; y < maxY; y++) {
@@ -211,7 +209,7 @@ public class Controller2 implements Initializable {
                                                 double Ny = y + diffy;
                                                 for (double diffx = -1; diffx <= 1; diffx++) {
                                                     double Nx = x + diffx;
-                                                    if (originalT[(int)Nx][(int)Ny] >= 0) {
+                                                    if (originalT[(int)Nx][(int)Ny] == 0) {
                                                         //infected
                                                         stopcounter = 0;
                                                         infected((int)Nx,(int) Ny, copy, infectionprob);
@@ -237,14 +235,16 @@ public class Controller2 implements Initializable {
                             }
                             //terminate
                             if (stopcounter > 1) {
-                                writer.println(infectionprob+" "+accumInfecC/ 50);
+                                if(infectionprob<=1) {
+                                    writer.println(infectionprob + " " + accumInfecC );
+                                }
                                 resetAllDCounter();
                                 resetAllOth();
                                 this.stop();
                                 outputBox.setText(outputBox.getText() + "\n Simulation has done!!");
                                 resetFlag = 1;
                                 if(infectionprob<=1) {
-                                    Controller2.this.start(infectionprob + 0.05);
+                                    Controller2.this.start(infectionprob + 0.1);
                                 }else {
                                     writer.close();
                                     resetFlag=0;
@@ -290,7 +290,7 @@ return;
 
         }
         if(tInfectSW.isSelected()){
-            outputBox.setText(outputBox.getText()+accumInfecC/ 50+" total amount of people has infected until today \n" );
+            outputBox.setText(outputBox.getText()+accumInfecC+" total amount of people has infected until today \n" );
             tableWriter.println(" - ");
             tableWriter.println(accumInfecC+" | ");
 
@@ -301,7 +301,7 @@ return;
             tableWriter.println(accumDeathcC+" | ");
 
         }
-        if (accumInfecC/ 50>populationInt/2){
+        if (accumInfecC>populationInt/2){
             outputBox.setText(outputBox.getText()+"EPIDEMIC!!!!!!!!!\n");
         }
         outputBox.setText(outputBox.getText()+effectedCounter+" people effected until today\n");
@@ -310,7 +310,6 @@ return;
     }
     //infected method
     public boolean infected(int Nx,int Ny,boolean[][]copy,double infectionprob){
-        Random rand = new Random();
         double test = rand.nextDouble();
         if (test < infectionprob) {
             infectedCounter++;
@@ -382,7 +381,7 @@ return;
         }
         //default value
         population.setText("5000");
-        infection.setText("0.5");
+        infection.setText("0");
         Min.setText("2");
         Max.setText("4");
         death.setText("0.2");
@@ -391,6 +390,19 @@ return;
         outputBox.setText("Please input the initial value for each box. \n"+"For probability please use decimal number instead of percentage.\nFor example 0.75 instead of 75 percent. ");
     }
     public void resetAllOth(){
+        deathCounter=0;
+        infectedCounter=0;
+        recoverCounter=0;
+       illCounter=0;
+        accumInfecC=0;
+        accumDeathcC=0;
+        counter=0;
+
+       lastUpdate=0;
+        original=null;
+        originalT=null;
+        Canvas display=null;
+        stopcounter=0;
         original=null;
         originalT=null;
         mouseRec=null;
