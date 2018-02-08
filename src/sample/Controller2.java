@@ -140,7 +140,7 @@ public class Controller2 implements Initializable {
                 original = new boolean[maxX][maxY];
                 originalT = new int[maxX][maxY];
             } else {
-                outputBox.setText("Population size is too big. it should be less that 70*77 ");
+                outputBox.setText("Population size is too big. it should be less that 200 ");
                 return;
             }
 
@@ -242,12 +242,17 @@ public class Controller2 implements Initializable {
                                 resetAllDCounter();
                                 resetAllOth();
                                 this.stop();
-                                outputBox.setText(outputBox.getText() + "\n Simulation has done!!");
                                 resetFlag = 1;
                                 if(infectionprob<=1) {
                                     Controller2.this.start(infectionprob + 0.1);
                                 }else {
+                                    resetAllDCounter();
+                                    resetAllOth();
                                     writer.close();
+                                    outputBox.setText(outputBox.getText() + "\n Simulation has done!!");
+                                    this.stop();
+                                    xAxispub.clear();
+                                    yAxispub.clear();
                                     resetFlag=0;
                                 }
                             }
@@ -381,7 +386,7 @@ return;
             System.err.println(e);
         }
         //default value
-        population.setText("5000");
+        population.setText("200");
         infection.setText("0");
         Min.setText("2");
         Max.setText("4");
