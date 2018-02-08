@@ -20,6 +20,7 @@ import javafx.scene.paint.Color;
 
 import java.io.PrintWriter;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -79,8 +80,8 @@ public class Controller2 implements Initializable {
     private int accumDeathcC;
     private int effectedCounter;
     private int resetFlag;
-    private int[] xAxispub = new int[1];
-    private int[] yAxispub = new int[1];
+    private ArrayList<Integer> xAxispub = new ArrayList<>();
+    private ArrayList<Integer> yAxispub = new ArrayList<>();
     public GraphicsContext gc;
     public int maxY;
     public int maxX;
@@ -114,7 +115,7 @@ public class Controller2 implements Initializable {
             outputBox.setText("Please click on the empty space on the right to choose where has the initial patient been detected. ");
         outputBox.setText(outputBox.getText() + "running"+infectionprob +" round \n ");
         //generate canvas depends on total population
-            if (populationInt < 74 * 80) {
+            if (populationInt < 15 * 16) {
                 maxX = (int) Math.sqrt(populationInt);
                 maxY = populationInt / maxX;
                 display = new Canvas(maxX *  50, maxY *  50);
@@ -153,24 +154,24 @@ public class Controller2 implements Initializable {
                 display.setOnMouseClicked(event -> {
                     xAxis[0] = (int) event.getX() /  50;
                     yAxis[0] = (int) event.getY() /  50;
-                    xAxis[0] = xAxis[0] *  50;
-                    yAxis[0] = yAxis[0] *  50;
-                    xAxispub[0] = xAxis[0];
-                    yAxispub[0] = yAxis[0];
+                    xAxis[0] = xAxis[0] ;
+                    yAxis[0] = yAxis[0] ;
+                    xAxispub.add(xAxis[0]);
+                    yAxispub.add(yAxis[0]);
                     boolean[][] copy = original;
-                    infectedCounter++;
-                    updateCanvas(xAxis[0], yAxis[0], copy);
+                    infected(xAxis[0], yAxis[0], copy,1);
                     original = copy;
                     counter++;
                 });
             } else {
-                xAxis[0] = xAxispub[0];
-                yAxis[0] = yAxispub[0];
-                boolean[][] copy = original;
-                infectedCounter++;
-                updateCanvas(xAxis[0], yAxis[0], copy);
-                original = copy;
-                counter++;
+                for(int i=0;i<initInt;i++) {
+                    xAxis[0] = xAxispub.get(i);
+                    yAxis[0] = yAxispub.get(i);
+                    boolean[][] copy = original;
+                    infected(xAxis[0], yAxis[0], copy, 1);
+                    original = copy;
+                    counter++;
+                }
             }
             //end of initialization
             //log input value into log file

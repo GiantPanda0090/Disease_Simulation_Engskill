@@ -51,7 +51,7 @@
                <children>
                   <VBox prefHeight="100.0" prefWidth="152.0">
                      <children>
-                        <Label prefHeight="16.0" prefWidth="142.0" text="Infection Probability">
+                        <Label prefHeight="16.0" prefWidth="150.0" text="Initial Infection Probability">
                            <VBox.margin>
                               <Insets left="10.0" top="35.0" />
                            </VBox.margin>
