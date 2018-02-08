@@ -3,8 +3,8 @@
 
 This repository is for KTH Engineering skill II1304 Modelling Yr3 Assignment 3<br>
 Creator: Qi Li<br>
-Group Member:Qi Li, Hussam Aladdin<br>
-qi5@kth.se, hussamh@kth.se
+Group Member:Qi Li, ZiQi Xia<br>
+qi5@kth.se,  ziqix@kth.se
 
 How to compile and run/use the program<br>
 To be able to compile the program, it is required to have to Official Oracle Java JDK
