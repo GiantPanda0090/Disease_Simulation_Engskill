@@ -5,249 +5,307 @@
 <!--Download JavaFX 8.0 plus SceneBuilder before edit it-->
 <!--suggested to edit it in Intellij with SceneBuilder-->
 <!--Right click the fxml file on the project list in the right and choose Open in Scene Builder-->
-
-<?import javafx.scene.canvas.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.text.*?>
 <?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="845.0" prefWidth="1124.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller2">
-   <left>
-      <VBox prefHeight="845.0" prefWidth="321.0" BorderPane.alignment="CENTER">
-         <children>
-            <HBox prefHeight="77.0" prefWidth="321.0">
-               <children>
-                  <VBox prefHeight="75.0" prefWidth="151.0">
-                     <children>
-                        <Label prefHeight="24.0" prefWidth="133.0" text="Population Size">
-                           <VBox.margin>
-                              <Insets left="10.0" top="35.0" />
-                           </VBox.margin>
-                        </Label>
-                     </children>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </VBox>
-                  <VBox prefHeight="75.0" prefWidth="152.0">
-                     <children>
-                        <TextField fx:id="population" onAction="#start">
-                           <VBox.margin>
-                              <Insets left="3.0" top="30.0" />
-                           </VBox.margin>
-                        </TextField>
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
-            <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <VBox prefHeight="100.0" prefWidth="152.0">
-                     <children>
-                        <Label prefHeight="16.0" prefWidth="150.0" text="Initial Infection Probability">
-                           <VBox.margin>
-                              <Insets left="10.0" top="35.0" />
-                           </VBox.margin>
-                        </Label>
-                     </children>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </VBox>
-                  <VBox prefHeight="100.0" prefWidth="149.0">
-                     <children>
-                        <TextField fx:id="infection" prefHeight="31.0" prefWidth="167.0">
-                           <VBox.margin>
-                              <Insets left="3.0" top="30.0" />
-                           </VBox.margin>
-                        </TextField>
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
-            <HBox layoutX="10.0" layoutY="110.0" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <VBox prefHeight="94.0" prefWidth="138.0">
-                     <children>
-                        <Label prefHeight="21.0" prefWidth="135.0" text="Sickness Duration">
-                           <VBox.margin>
-                              <Insets left="10.0" top="35.0" />
-                           </VBox.margin>
-                        </Label>
-                     </children>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </VBox>
-                  <VBox layoutX="10.0" layoutY="10.0" prefHeight="94.0" prefWidth="184.0">
-                     <children>
-                        <HBox prefHeight="54.0" prefWidth="184.0">
-                           <children>
-                              <Label prefHeight="16.0" prefWidth="142.0" text="  Min" />
-                              <TextField fx:id="Min" prefHeight="31.0" prefWidth="167.0" />
-                           </children>
-                        </HBox>
-                        <HBox prefHeight="41.0" prefWidth="57.0">
-                           <children>
-                              <Label prefHeight="16.0" prefWidth="142.0" text="  Max" />
-                              <TextField fx:id="Max" prefHeight="31.0" prefWidth="167.0" />
-                           </children>
-                        </HBox>
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
-            <HBox layoutX="10.0" layoutY="210.0" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <VBox prefHeight="100.0" prefWidth="152.0">
-                     <children>
-                        <Label prefHeight="16.0" prefWidth="142.0" text="Death Probability">
-                           <VBox.margin>
-                              <Insets left="10.0" top="35.0" />
-                           </VBox.margin>
-                        </Label>
-                     </children>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </VBox>
-                  <VBox prefHeight="100.0" prefWidth="149.0">
-                     <children>
-                        <TextField fx:id="death" prefHeight="31.0" prefWidth="167.0">
-                           <VBox.margin>
-                              <Insets left="3.0" top="30.0" />
-                           </VBox.margin>
-                        </TextField>
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
-            <HBox layoutX="10.0" layoutY="310.0" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <VBox prefHeight="94.0" prefWidth="151.0">
-                     <children>
-                        <Label prefHeight="16.0" prefWidth="142.0" text="Initial Sickness">
-                           <VBox.margin>
-                              <Insets left="10.0" top="35.0" />
-                           </VBox.margin>
-                        </Label>
-                     </children>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </VBox>
-                  <VBox prefHeight="94.0" prefWidth="158.0">
-                     <children>
-                        <TextField fx:id="init" prefHeight="31.0" prefWidth="131.0">
-                           <VBox.margin>
-                              <Insets left="3.0" top="30.0" />
-                           </VBox.margin>
-                        </TextField>
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
-            <VBox prefHeight="249.0" prefWidth="321.0">
-               <children>
-                  <HBox alignment="CENTER" prefHeight="29.0" prefWidth="321.0">
-                     <children>
-                        <Label text="Output Value" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER" prefHeight="225.0" prefWidth="321.0">
-                     <children>
-                        <TextArea fx:id="outputBox" prefHeight="223.0" prefWidth="324.0" wrapText="true" />
-                     </children>
-                  </HBox>
-               </children>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="845.0" prefWidth="1124.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="sample.Controller2">
+  <center>
+    <BorderPane fx:id="background" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+  </center>
+  <left>
+    <VBox prefHeight="845.0" prefWidth="321.0" BorderPane.alignment="CENTER">
+      <children>
+        <HBox prefHeight="54.0" prefWidth="321.0">
+          <children>
+            <VBox prefHeight="75.0" prefWidth="151.0">
+              <children>
+                <Label prefHeight="24.0" prefWidth="133.0" text="Population Size">
+                  <VBox.margin>
+                    <Insets left="10.0" top="35.0" />
+                  </VBox.margin>
+                </Label>
+              </children>
+              <HBox.margin>
+                <Insets />
+              </HBox.margin>
             </VBox>
-            <HBox alignment="CENTER" layoutX="10.0" layoutY="406.0" prefHeight="29.0" prefWidth="321.0">
-               <children>
-                  <Button mnemonicParsing="false" onAction="#start" text="Start!" />
-               </children>
+            <VBox prefHeight="75.0" prefWidth="152.0">
+              <children>
+                <TextField fx:id="population" onAction="#start" prefHeight="31.0" prefWidth="149.0">
+                  <VBox.margin>
+                    <Insets left="3.0" top="30.0" />
+                  </VBox.margin>
+                </TextField>
+              </children>
+            </VBox>
+          </children>
+        </HBox>
+        <HBox prefHeight="67.0" prefWidth="321.0">
+          <children>
+            <VBox prefHeight="100.0" prefWidth="152.0">
+              <children>
+                <Label prefHeight="16.0" prefWidth="150.0" text="Initial Infection Probability">
+                  <VBox.margin>
+                    <Insets left="10.0" top="35.0" />
+                  </VBox.margin>
+                </Label>
+              </children>
+              <HBox.margin>
+                <Insets />
+              </HBox.margin>
+            </VBox>
+            <VBox prefHeight="100.0" prefWidth="149.0">
+              <children>
+                <TextField fx:id="infection" prefHeight="31.0" prefWidth="167.0">
+                  <VBox.margin>
+                    <Insets left="3.0" top="30.0" />
+                  </VBox.margin>
+                </TextField>
+              </children>
+            </VBox>
+          </children>
+        </HBox>
+        <HBox prefHeight="100.0" prefWidth="200.0">
+          <children>
+            <VBox prefHeight="94.0" prefWidth="138.0">
+              <children>
+                <Label prefHeight="21.0" prefWidth="135.0" text="Sickness Duration">
+                  <VBox.margin>
+                    <Insets left="10.0" top="35.0" />
+                  </VBox.margin>
+                </Label>
+              </children>
+              <HBox.margin>
+                <Insets />
+              </HBox.margin>
+            </VBox>
+            <VBox prefHeight="94.0" prefWidth="184.0">
+              <children>
+                <HBox prefHeight="54.0" prefWidth="184.0">
+                  <children>
+                    <Label prefHeight="16.0" prefWidth="142.0" text="  Min" />
+                    <TextField fx:id="Min" prefHeight="31.0" prefWidth="167.0" />
+                  </children>
+                </HBox>
+                <HBox prefHeight="41.0" prefWidth="57.0">
+                  <children>
+                    <Label prefHeight="16.0" prefWidth="142.0" text="  Max" />
+                    <TextField fx:id="Max" prefHeight="31.0" prefWidth="167.0" />
+                  </children>
+                </HBox>
+              </children>
+            </VBox>
+          </children>
+        </HBox>
+        <HBox prefHeight="53.999900000002526" prefWidth="321.0">
+          <children>
+            <VBox prefHeight="69.0" prefWidth="152.0">
+              <children>
+                <Label prefHeight="16.0" prefWidth="142.0" text="Death Probability">
+                  <VBox.margin>
+                    <Insets left="10.0" top="35.0" />
+                  </VBox.margin>
+                </Label>
+              </children>
+              <HBox.margin>
+                <Insets />
+              </HBox.margin>
+            </VBox>
+            <VBox prefHeight="67.0" prefWidth="149.0">
+              <children>
+                <TextField fx:id="death" prefHeight="31.0" prefWidth="167.0">
+                  <VBox.margin>
+                    <Insets left="3.0" top="30.0" />
+                  </VBox.margin>
+                </TextField>
+              </children>
+            </VBox>
+          </children>
+        </HBox>
+        <HBox prefHeight="54.0" prefWidth="321.0">
+          <children>
+            <VBox prefHeight="94.0" prefWidth="151.0">
+              <children>
+                <Label prefHeight="16.0" prefWidth="142.0" text="Initial Sickness">
+                  <VBox.margin>
+                    <Insets left="10.0" top="35.0" />
+                  </VBox.margin>
+                </Label>
+              </children>
+              <HBox.margin>
+                <Insets />
+              </HBox.margin>
+            </VBox>
+            <VBox prefHeight="69.0" prefWidth="152.0">
+              <children>
+                <TextField fx:id="init" prefHeight="31.0" prefWidth="131.0">
+                  <VBox.margin>
+                    <Insets left="3.0" top="30.0" />
+                  </VBox.margin>
+                </TextField>
+              </children>
+            </VBox>
+          </children>
+        </HBox>
+        <HBox prefHeight="53.9998779296875" prefWidth="320.9998779296875">
+          <children>
+            <VBox minHeight="48.0" prefHeight="48.0" prefWidth="151.0">
+              <children>
+                <Label id="seed" prefHeight="16.0" prefWidth="105.0" text="Random Seed">
+                  <VBox.margin>
+                    <Insets left="10.0" top="35.0" />
+                  </VBox.margin>
+                </Label>
+              </children>
+              <HBox.margin>
+                <Insets />
+              </HBox.margin>
+            </VBox>
+            <VBox prefHeight="69.0" prefWidth="152.0">
+              <children>
+                <TextField fx:id="seed" prefHeight="31.0" prefWidth="131.0">
+                  <VBox.margin>
+                    <Insets left="3.0" top="30.0" />
+                  </VBox.margin>
+                </TextField>
+              </children>
+            </VBox>
+          </children>
+        </HBox>
+        <HBox prefHeight="53.9998779296875" prefWidth="320.9998779296875">
+          <children>
+            <VBox minHeight="48.0" prefHeight="48.0" prefWidth="151.0">
+              <children>
+                <Label id="seed" prefHeight="16.0" prefWidth="128.0" text="Time of simulation">
+                  <VBox.margin>
+                    <Insets left="10.0" top="35.0" />
+                  </VBox.margin>
+                </Label>
+              </children>
+              <HBox.margin>
+                <Insets />
+              </HBox.margin>
+            </VBox>
+            <VBox prefHeight="69.0" prefWidth="152.0">
+              <children>
+                <TextField fx:id="nrRun" prefHeight="31.0" prefWidth="131.0">
+                  <VBox.margin>
+                    <Insets left="3.0" top="30.0" />
+                  </VBox.margin>
+                </TextField>
+              </children>
+            </VBox>
+          </children>
+        </HBox>
+        <VBox prefHeight="249.0" prefWidth="321.0">
+          <children>
+            <HBox alignment="CENTER" prefHeight="29.0" prefWidth="321.0">
+              <children>
+                <Label text="Output" />
+              </children>
             </HBox>
-         </children>
-         <BorderPane.margin>
-            <Insets />
-         </BorderPane.margin>
-      </VBox>
-   </left>
-   <top>
-      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <HBox prefHeight="100.0" prefWidth="1126.0">
-               <children>
-                  <HBox alignment="CENTER" prefHeight="51.0" prefWidth="385.0">
-                     <children>
-                        <Label prefHeight="48.0" prefWidth="384.0" text="Disease infection Simulator " textAlignment="CENTER">
-                           <font>
-                              <Font size="31.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="738.0">
-                     <children>
-                        <BorderPane prefHeight="100.0" prefWidth="749.0">
-                           <bottom>
-                              <HBox alignment="CENTER" prefHeight="24.0" prefWidth="738.0" BorderPane.alignment="CENTER">
-                                 <children>
-                                    <HBox prefHeight="31.0" prefWidth="115.0">
-                                       <children>
-                                          <ToggleButton fx:id="infectSW" mnemonicParsing="false" text="infected /day" />
-                                       </children>
-                                    </HBox>
-                                    <HBox prefHeight="31.0" prefWidth="90.0">
-                                       <children>
-                                          <ToggleButton fx:id="deadSW" mnemonicParsing="false" text="dead /day" />
-                                       </children>
-                                    </HBox>
-                                    <HBox prefHeight="31.0" prefWidth="115.0">
-                                       <children>
-                                          <ToggleButton fx:id="recoverySW" mnemonicParsing="false" text="recoverd/day" />
-                                       </children>
-                                    </HBox>
-                                    <HBox prefHeight="31.0" prefWidth="73.0">
-                                       <children>
-                                          <ToggleButton fx:id="illSW" mnemonicParsing="false" text="ill /day" />
-                                       </children>
-                                    </HBox>
-                                    <HBox prefHeight="31.0" prefWidth="142.0">
-                                       <children>
-                                          <ToggleButton fx:id="tInfectSW" mnemonicParsing="false" prefHeight="31.0" prefWidth="134.0" text="Total infection" />
-                                       </children>
-                                    </HBox>
-                                    <HBox prefHeight="31.0" prefWidth="115.0">
-                                       <children>
-                                          <ToggleButton fx:id="tDeathSW" mnemonicParsing="false" text="Total death" />
-                                       </children>
-                                    </HBox>
-                                 </children>
-                              </HBox>
-                           </bottom>
-                           <center>
-                              <HBox alignment="BOTTOM_CENTER" prefHeight="1.0" prefWidth="738.0" BorderPane.alignment="CENTER">
-                                 <children>
-                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="169.0" text="Output switch" />
-                                 </children>
-                              </HBox>
-                           </center>
-                        </BorderPane>
-                     </children>
-                  </HBox>
-               </children>
+            <HBox alignment="CENTER" prefHeight="225.0" prefWidth="321.0">
+              <children>
+                <TextArea fx:id="outputBox" prefHeight="223.0" prefWidth="324.0" wrapText="true" />
+              </children>
             </HBox>
-         </children>
-      </HBox>
-   </top>
-   <center>
-      <BorderPane fx:id="background" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-   </center>
+          </children>
+        </VBox>
+        <HBox alignment="CENTER" prefHeight="27.0001220703125" prefWidth="321.0">
+          <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+              <children>
+                <Button id="randgen" mnemonicParsing="false" onAction="#randgen" text="Generate Prime" />
+              </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+              <children>
+                <Button mnemonicParsing="false" onAction="#start" text="Start!" />
+              </children>
+            </HBox>
+          </children>
+        </HBox>
+      </children>
+      <BorderPane.margin>
+        <Insets />
+      </BorderPane.margin>
+    </VBox>
+  </left>
+  <top>
+    <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <children>
+        <HBox prefHeight="100.0" prefWidth="1126.0">
+          <children>
+            <HBox alignment="CENTER" prefHeight="51.0" prefWidth="385.0">
+              <children>
+                <Label prefHeight="48.0" prefWidth="384.0" text="Disease infection Simulator " textAlignment="CENTER">
+                  <font>
+                    <Font size="31.0" />
+                  </font>
+                </Label>
+              </children>
+            </HBox>
+            <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="738.0">
+              <children>
+                <BorderPane prefHeight="100.0" prefWidth="749.0">
+                  <bottom>
+                    <HBox alignment="CENTER" prefHeight="24.0" prefWidth="738.0" BorderPane.alignment="CENTER">
+                      <children>
+                        <HBox prefHeight="31.0" prefWidth="115.0">
+                          <children>
+                            <ToggleButton fx:id="infectSW" mnemonicParsing="false" text="infected /day" />
+                          </children>
+                        </HBox>
+                        <HBox prefHeight="31.0" prefWidth="90.0">
+                          <children>
+                            <ToggleButton fx:id="deadSW" mnemonicParsing="false" text="dead /day" />
+                          </children>
+                        </HBox>
+                        <HBox prefHeight="31.0" prefWidth="115.0">
+                          <children>
+                            <ToggleButton fx:id="recoverySW" mnemonicParsing="false" text="recoverd/day" />
+                          </children>
+                        </HBox>
+                        <HBox prefHeight="31.0" prefWidth="73.0">
+                          <children>
+                            <ToggleButton fx:id="illSW" mnemonicParsing="false" text="ill /day" />
+                          </children>
+                        </HBox>
+                        <HBox prefHeight="31.0" prefWidth="142.0">
+                          <children>
+                            <ToggleButton fx:id="tInfectSW" mnemonicParsing="false" prefHeight="31.0" prefWidth="134.0" text="Total infection" />
+                          </children>
+                        </HBox>
+                        <HBox prefHeight="31.0" prefWidth="115.0">
+                          <children>
+                            <ToggleButton fx:id="tDeathSW" mnemonicParsing="false" text="Total death" />
+                          </children>
+                        </HBox>
+                      </children>
+                    </HBox>
+                  </bottom>
+                  <center>
+                    <HBox alignment="BOTTOM_CENTER" prefHeight="1.0" prefWidth="738.0" BorderPane.alignment="CENTER">
+                      <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="24.0" prefWidth="169.0" text="Output switch" />
+                      </children>
+                    </HBox>
+                  </center>
+                </BorderPane>
+              </children>
+            </HBox>
+          </children>
+        </HBox>
+      </children>
+    </HBox>
+  </top>
 </BorderPane>
