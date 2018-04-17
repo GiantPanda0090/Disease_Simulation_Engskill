@@ -75,6 +75,7 @@ public class Controller2 implements Initializable {
     /* non fxml init*/
     PrintWriter writer;
     PrintWriter tableWriter;
+    double datadiff=0.01;
 
 
     //output
@@ -111,11 +112,30 @@ public class Controller2 implements Initializable {
     @FXML
     public void start(ActionEvent actionEvent) {
         simulation(Double.parseDouble(infection.getText()));
+
     }
 
 
     public void simulation(double infectionprob) {
-        start(infectionprob,1);
+        start(infectionprob,1,true);
+        String path = "data/";
+        String foldername = "prob";
+        try {
+            (new File(path + population.getText())).mkdirs();
+            (new File(path + population.getText() + "/" + foldername)).mkdirs();
+            PrintWriter probwrite = new PrintWriter(path + population.getText() + "/" + foldername + "/" + "prob.dat", "UTF-8");
+            for (double i = 0; i < 1; i = i + datadiff) {
+                probwrite.println(i);
+            }
+            probwrite.close();
+            foldername = "seed";
+            (new File(path + population.getText() + "/" + foldername)).mkdirs();
+            PrintWriter seedwrite = new PrintWriter(path + population.getText() + "/" + foldername + "/" + "seed.dat", "UTF-8");
+            seedwrite.println("Seed that used in this expierment is: " + seedInt);
+            seedwrite.close();
+        }catch(Exception e ){
+            e.printStackTrace();
+        }
 
     }
     public void randgen(){
@@ -124,17 +144,20 @@ public class Controller2 implements Initializable {
 
     }
 
-    public void start(double infectionprob,int runTime) {
-        try {
-            String path = "data/";
-            String name =maxX+"_"+Integer.parseInt(population.getText());
-            (new File(path +name)).mkdirs();
-            (new File(path +name+"/"+ seedInt)).mkdirs();
+    public void start(double infectionprob,int runTime,boolean nextRound) {
 
-            writer = new PrintWriter(path +name+"/"+ seedInt+"/" + "data.dat", "UTF-8");
-        }catch (Exception e){
-            e.printStackTrace();
+        if (nextRound) {
+            try {
+                String path = "data/";
+                String foldername = Integer.toString(runTime);
+                //(new File(path + population.getText())).mkdirs();
+                (new File(path + population.getText() + "/" + foldername)).mkdirs();
+                writer = new PrintWriter(path + population.getText() + "/" + foldername + "/" + "data.dat", "UTF-8");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
+
         outputBox.setText(outputBox.getText() + "\n Running "+runTime+" Times");
         outputBox.setText(outputBox.getText() + "\n Current Probability "+infectionprob+" ");
 
@@ -267,23 +290,22 @@ public class Controller2 implements Initializable {
                         //terminate
                         if (stopcounter > 1) {
                             if(infectionprob<=1) {
-                                writer.println(infectionprob + " " + accumInfecC );
+                                writer.println( accumInfecC );
+                                //System.out.println(infectionprob + " " + accumInfecC );
+
                             }
                             resetAllDCounter();
                             resetAllOth();
                             this.stop();
                             resetFlag = 1;
                             if(infectionprob<=1) {
-                                Controller2.this.start(infectionprob + 0.01,runTime);
+                                Controller2.this.start(infectionprob + datadiff,runTime,false);
                             }else if(runTime<nrRunInt) {
                                 writer.close();
-                                writer.flush();
                                 //writer = null;
                                 randgen();
-                                Controller2.this.start(Double.parseDouble(infection.getText()),runTime+1);
-
-
-
+                                //System.out.println("currently running "+ runTime);
+                                Controller2.this.start(Double.parseDouble(infection.getText()),runTime+1,true);
                             }else {
                                 resetAllDCounter();
                                 resetAllOth();
@@ -428,7 +450,7 @@ public class Controller2 implements Initializable {
         illSW.setSelected(true);
         tInfectSW.setSelected(true);
         tDeathSW.setSelected(true);
-        try {
+        try{
 
             tableWriter= new PrintWriter("data_table.txt", "UTF-8");
         }catch(Exception e ){
