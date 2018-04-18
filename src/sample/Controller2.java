@@ -101,6 +101,9 @@ public class Controller2 implements Initializable {
     public int counter;
     public int seedInt;
     public int nrRunInt;
+    private Random durationR= new Random();
+    private Random dRand = new Random();
+    private PrintWriter seedwrite;
 
 
     private long lastUpdate;
@@ -117,25 +120,25 @@ public class Controller2 implements Initializable {
 
 
     public void simulation(double infectionprob) {
-        start(infectionprob,1,true);
         String path = "data/";
         String foldername = "prob";
         try {
-            (new File(path + population.getText())).mkdirs();
-            (new File(path + population.getText() + "/" + foldername)).mkdirs();
-            PrintWriter probwrite = new PrintWriter(path + population.getText() + "/" + foldername + "/" + "prob.dat", "UTF-8");
+            (new File(path + population.getText()+"_"+Min.getText()+"_"+Max.getText())).mkdirs();
+            (new File(path + population.getText()+"_"+Min.getText()+"_"+Max.getText() + "/" + foldername)).mkdirs();
+            PrintWriter probwrite = new PrintWriter(path + population.getText()+"_"+Min.getText()+"_"+Max.getText() + "/" + foldername + "/" + "prob.dat", "UTF-8");
             for (double i = 0; i < 1; i = i + datadiff) {
                 probwrite.println(i);
             }
             probwrite.close();
             foldername = "seed";
-            (new File(path + population.getText() + "/" + foldername)).mkdirs();
-            PrintWriter seedwrite = new PrintWriter(path + population.getText() + "/" + foldername + "/" + "seed.dat", "UTF-8");
+            (new File(path + population.getText()+"_"+Min.getText()+"_"+Max.getText() + "/" + foldername)).mkdirs();
+             seedwrite = new PrintWriter(path + population.getText()+"_"+Min.getText()+"_"+Max.getText() + "/" + foldername + "/" +"seed.dat", "UTF-8");
             seedwrite.println("Seed that used in this expierment is: " + seedInt);
-            seedwrite.close();
         }catch(Exception e ){
             e.printStackTrace();
         }
+        start(infectionprob,1,true);
+
 
     }
     public void randgen(){
@@ -151,8 +154,8 @@ public class Controller2 implements Initializable {
                 String path = "data/";
                 String foldername = Integer.toString(runTime);
                 //(new File(path + population.getText())).mkdirs();
-                (new File(path + population.getText() + "/" + foldername)).mkdirs();
-                writer = new PrintWriter(path + population.getText() + "/" + foldername + "/" + "data.dat", "UTF-8");
+                (new File(path + population.getText()+"_"+Min.getText()+"_"+Max.getText() + "/" + foldername)).mkdirs();
+                writer = new PrintWriter(path + population.getText()+"_"+Min.getText()+"_"+Max.getText() + "/" + foldername + "/" + "data.dat", "UTF-8");
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -165,6 +168,17 @@ public class Controller2 implements Initializable {
         nrRunInt=Integer.parseInt(nrRun.getText());
         //initialization for start button
         seedInt=Integer.parseInt(seed.getText());
+        durationR.setSeed(seedInt);
+        int infecseedInt=BigInteger.probablePrime(160, new Random()).intValue();
+        int deathseedInt=BigInteger.probablePrime(160, new Random()).intValue();
+        seedwrite.println("Seed that used for infection in this expierment is: " + infecseedInt);
+
+        seedwrite.println("Seed that used for death in this expierment is: " + deathseedInt);
+
+
+        dRand.setSeed(deathseedInt);
+        rand.setSeed(infecseedInt);
+
         int populationInt = Integer.parseInt(population.getText());
 
         //generate canvas depends on total population
@@ -310,6 +324,7 @@ public class Controller2 implements Initializable {
                                 resetAllDCounter();
                                 resetAllOth();
                                 writer.close();
+                                seedwrite.close();
                                 outputBox.setText(outputBox.getText() + "\n Simulation has done!!");
                                 this.stop();
                                 xAxispub.clear();
@@ -398,7 +413,6 @@ public class Controller2 implements Initializable {
     //death method
     public boolean death(int x,int y){
         //death
-        Random dRand = new Random();
         //dRand.setSeed(seedInt);
         double dTest = dRand.nextDouble();
         if (dTest < Double.parseDouble(death.getText())) {
@@ -505,6 +519,9 @@ public class Controller2 implements Initializable {
         illCounter=0;
     }
 
+
+
+
     //gui update per change
     public void updateCanvas(int x,int y,boolean[][]copy){
         final int xReal = x;
@@ -514,8 +531,6 @@ public class Controller2 implements Initializable {
         copy[x /  10][y /  10] = true;
         int minT= Integer.parseInt(Min.getText());
         int maxT=Integer.parseInt(Max.getText());
-        Random durationR= new Random();
-        durationR.setSeed(seedInt);
         originalT[x/ 10][y/ 10]=durationR.nextInt(maxT-minT) + minT;
 
     }
