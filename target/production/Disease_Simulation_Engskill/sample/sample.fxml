@@ -158,7 +158,7 @@
         </HBox>
         <HBox prefHeight="53.9998779296875" prefWidth="320.9998779296875">
           <children>
-            <VBox minHeight="48.0" prefHeight="48.0" prefWidth="151.0">
+            <VBox minHeight="48.0" prefHeight="52.0" prefWidth="105.0">
               <children>
                 <Label id="seed" prefHeight="16.0" prefWidth="105.0" text="Random Seed">
                   <VBox.margin>
@@ -170,13 +170,34 @@
                 <Insets />
               </HBox.margin>
             </VBox>
-            <VBox prefHeight="69.0" prefWidth="152.0">
+            <VBox minHeight="26.0" prefHeight="52.0001220703125" prefWidth="69.9998779296875">
               <children>
-                <TextField fx:id="seed" prefHeight="31.0" prefWidth="131.0">
-                  <VBox.margin>
-                    <Insets left="3.0" top="30.0" />
-                  </VBox.margin>
-                </TextField>
+                <Text scaleX="1.0264957574946603" scaleY="0.9663551220764883" strokeType="OUTSIDE" strokeWidth="0.0" text="Duration" />
+                <HBox alignment="BOTTOM_LEFT" prefHeight="40.9998779296875" prefWidth="69.0">
+                  <children>
+                    <TextField fx:id="seed" prefHeight="21.0" prefWidth="69.0" />
+                  </children>
+                </HBox>
+              </children>
+            </VBox>
+            <VBox minHeight="26.0" prefHeight="52.0" prefWidth="69.9998779296875">
+              <children>
+                <Text scaleX="1.0264957574946603" scaleY="0.9663551220764883" strokeType="OUTSIDE" strokeWidth="0.0" text="infection" />
+                <HBox id="seed" alignment="BOTTOM_LEFT" prefHeight="40.9998779296875" prefWidth="69.0">
+                  <children>
+                    <TextField id="seed" fx:id="seed1" prefHeight="21.0" prefWidth="69.0" />
+                  </children>
+                </HBox>
+              </children>
+            </VBox>
+            <VBox minHeight="26.0" prefHeight="52.0" prefWidth="69.9998779296875">
+              <children>
+                <Text scaleX="1.0264957574946603" scaleY="0.9663551220764883" strokeType="OUTSIDE" strokeWidth="0.0" text="death" />
+                <HBox id="seed" alignment="BOTTOM_LEFT" prefHeight="40.9998779296875" prefWidth="69.0">
+                  <children>
+                    <TextField id="seed" fx:id="seed2" prefHeight="21.0" prefWidth="69.0" />
+                  </children>
+                </HBox>
               </children>
             </VBox>
           </children>
@@ -232,6 +253,11 @@
                 <Button mnemonicParsing="false" onAction="#start" text="Start!" />
               </children>
             </HBox>
+          </children>
+        </HBox>
+        <HBox prefHeight="53.9998779296875" prefWidth="320.9998779296875">
+          <children>
+            <VBox prefHeight="69.0" prefWidth="152.0" />
           </children>
         </HBox>
       </children>

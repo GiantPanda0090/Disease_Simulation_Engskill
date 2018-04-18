@@ -38,6 +38,10 @@ public class Controller2 implements Initializable {
 
     @FXML
     public TextField seed;
+    @FXML
+    public TextField seed1;
+    @FXML
+    public TextField seed2;
 
     @FXML
     public TextField death;
@@ -75,7 +79,7 @@ public class Controller2 implements Initializable {
     /* non fxml init*/
     PrintWriter writer;
     PrintWriter tableWriter;
-    double datadiff=0.01;
+    double datadiff=0.1;
 
 
     //output
@@ -104,6 +108,8 @@ public class Controller2 implements Initializable {
     private Random durationR= new Random();
     private Random dRand = new Random();
     private PrintWriter seedwrite;
+    private int infecseedInt;
+    private int deathseedInt;
 
 
     private long lastUpdate;
@@ -142,8 +148,13 @@ public class Controller2 implements Initializable {
 
     }
     public void randgen(){
+        infecseedInt=BigInteger.probablePrime(160, new Random()).intValue();
+        deathseedInt=BigInteger.probablePrime(160, new Random()).intValue();
         seedInt=BigInteger.probablePrime(160, new Random()).intValue();
         seed.setText(String.valueOf(seedInt));
+        seed1.setText(String.valueOf(infecseedInt));
+        seed2.setText(String.valueOf(deathseedInt));
+
 
     }
 
@@ -169,8 +180,7 @@ public class Controller2 implements Initializable {
         //initialization for start button
         seedInt=Integer.parseInt(seed.getText());
         durationR.setSeed(seedInt);
-        int infecseedInt=BigInteger.probablePrime(160, new Random()).intValue();
-        int deathseedInt=BigInteger.probablePrime(160, new Random()).intValue();
+
         seedwrite.println("Seed that used for infection in this expierment is: " + infecseedInt);
 
         seedwrite.println("Seed that used for death in this expierment is: " + deathseedInt);
@@ -254,7 +264,7 @@ public class Controller2 implements Initializable {
                     display.setOnMouseClicked(null);
                     display.setOnMouseEntered(null);
                     //start a new day per second
-                    if (now - lastUpdate >= 1000_000) {
+                    if (now - lastUpdate >= 1000) {
                         resetAllDCounter();
 
                         for (int y = 0; y < maxY; y++) {
