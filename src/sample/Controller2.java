@@ -79,7 +79,7 @@ public class Controller2 implements Initializable {
     /* non fxml init*/
     PrintWriter writer;
     PrintWriter tableWriter;
-    double datadiff=0.1;
+    double datadiff=0.01;
 
 
     //output
@@ -264,7 +264,7 @@ public class Controller2 implements Initializable {
                     display.setOnMouseClicked(null);
                     display.setOnMouseEntered(null);
                     //start a new day per second
-                    if (now - lastUpdate >= 1000) {
+                    if (now - lastUpdate >= 1000_000_000) {
                         resetAllDCounter();
 
                         for (int y = 0; y < maxY; y++) {

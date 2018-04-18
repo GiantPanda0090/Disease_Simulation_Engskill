@@ -17,22 +17,21 @@ set xlabel "Porbability of infection"
 set ylabel "Number of effected individual"
 
 
-data1 = "<( paste data/50/prob/prob.dat data/50/*/data.dat )"
-data2 = "<( paste data/50/prob/prob.dat data/50/*/data.dat )"
-data3 = "<( paste data/50/prob/prob.dat data/50/*/data.dat )"
-data4 = "<( paste data/50/prob/prob.dat data/50/*/data.dat )"
-data5 = "<( paste data/50/prob/prob.dat data/50/*/data.dat )"
+data1 = "<( paste data/40_6_9/prob/prob.dat data/40_6_9/*/data.dat )"
+data2 = "<( paste data/50_1_12/prob/prob.dat data/50_1_12/*/data.dat )"
+data3 = "<( paste data/50_3_9/prob/prob.dat data/50_3_9/*/data.dat )"
+data4 = "<( paste data/50_4_8/prob/prob.dat data/50_4_8/*/data.dat )"
 
 MAXCOL = 3
 
-
+set xrange [-0:0.1]
 
 
 stat data1 u 1:(sum [col=2:MAXCOL] column(col))/(MAXCOL-1)
 stat data2 u 1:(sum [col=2:MAXCOL] column(col))/(MAXCOL-1)
 stat data3 u 1:(sum [col=2:MAXCOL] column(col))/(MAXCOL-1) 
 stat data4 u 1:(sum [col=2:MAXCOL] column(col))/(MAXCOL-1) 
-stat data5 u 1:(sum [col=2:MAXCOL] column(col))/(MAXCOL-1)
 
 
-plot data1 u 1:(sum [col=2:MAXCOL] column(col))/(MAXCOL-1) w lp pt 6 ps 2 title "HT14",data2 u 1:(sum [col=2:MAXCOL] column(col))/(MAXCOL-1) w lp pt 6 ps 2 title "HT15",data3 u 1:(sum [col=2:MAXCOL] column(col))/(MAXCOL-1) w lp pt 6 ps 2 title "HT16",data4 u 1:(sum [col=2:MAXCOL] column(col))/(MAXCOL-1) w lp pt 6 ps 2 title "HT17",1250 lt rgb "red",800 lt rgb "gold",1137.5 lt rgb "blue",data5 u 1:2 w lp pt 6 ps 2 title "HT14",data5 u 1:(sum [col=2:MAXCOL] column(col))/(MAXCOL-1) w lp pt 3 ps 4 lt rgb "black" title "average"
+
+plot data1 u 1:(sum [col=2:MAXCOL] column(col))/(MAXCOL-1) w lp pt 6 ps 2 title "HT17",data2 u 1:(sum [col=2:MAXCOL] column(col))/(MAXCOL-1) w lp pt 6 ps 2 title "HT16",data3 u 1:(sum [col=2:MAXCOL] column(col))/(MAXCOL-1) w lp pt 6 ps 2 title "HT15",data4 u 1:(sum [col=2:MAXCOL] column(col))/(MAXCOL-1) w lp pt 6 ps 2 title "HT14", 1250 lt rgb "red",800 lt rgb "blue"
