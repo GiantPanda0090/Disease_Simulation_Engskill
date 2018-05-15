@@ -34,4 +34,4 @@ stat data4 u 1:(sum [col=2:MAXCOL] column(col))/(MAXCOL-1)
 
 
 
-plot data1 u 1:(sum [col=2:MAXCOL] column(col))/(MAXCOL-1) w lp pt 6 ps 2 title "HT17",data2 u 1:(sum [col=2:MAXCOL] column(col))/(MAXCOL-1) w lp pt 6 ps 2 title "HT16",data3 u 1:(sum [col=2:MAXCOL] column(col))/(MAXCOL-1) w lp pt 6 ps 2 title "HT15",data4 u 1:(sum [col=2:MAXCOL] column(col))/(MAXCOL-1) w lp pt 6 ps 2 title "HT14", 1250 lt rgb "red",800 lt rgb "blue"
+plot data1 u 1:(sum [col=2:MAXCOL] column(col))/(MAXCOL-1) w xerr lp pt 6 ps 2 title "HT17",data2 u 1:(sum [col=2:MAXCOL] column(col))/(MAXCOL-1) w xerr lp pt 6 ps 2 title "HT16",data3 u 1:(sum [col=2:MAXCOL] column(col))/(MAXCOL-1) w xerr lp pt 6 ps 2 title "HT15",data4 u 1:(sum [col=2:MAXCOL] column(col))/(MAXCOL-1) w xerr lp pt 6 ps 2 title "HT14",1250 lt rgb "red",800 lt rgb "blue"
