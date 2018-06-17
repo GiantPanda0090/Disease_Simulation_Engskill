@@ -264,7 +264,7 @@ public class Controller2 implements Initializable {
                     display.setOnMouseClicked(null);
                     display.setOnMouseEntered(null);
                     //start a new day per second
-                    if (now - lastUpdate >= 1000_000_000) {
+                    if (now - lastUpdate >= 1000) {
                         resetAllDCounter();
 
                         for (int y = 0; y < maxY; y++) {

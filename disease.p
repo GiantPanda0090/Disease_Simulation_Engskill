@@ -26,7 +26,7 @@ MAXCOL = 20
 
 
 
-set xrange[0.04:0.1]
+
 
 
 stat data1 u 1:(sum [col=2:MAXCOL] column(col))/(MAXCOL-1)
