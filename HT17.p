@@ -25,7 +25,7 @@ data3 = "<( paste data/50_3_9/prob/prob.dat data/50_3_9/*/data.dat data/50_3_9/m
 data4 = "<( paste data/50_4_8/prob/prob.dat data/50_4_8/*/data.dat data/50_4_8/min.dat data/50_4_8/max.dat)"
 MAXCOL = 20
 
-set xrange [0:0.1]
+
 
 
 
